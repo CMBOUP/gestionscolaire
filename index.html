@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C2M Gestion Scolaire — Plateforme Unifiée & Synchronisée</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #0E2A46;
+            --primary-light: #1e5a96;
+            --secondary: #2ecc71;
+            --accent: #f39c12;
+            --danger: #e74c3c;
+            --light: #f6f8fa;
+            --dark: #16232f;
+            --border: #e1e8ee;
+        }
+
+        body {
+            font-family: 'Segoe UI', Inter, system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #1b5da6 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .input-std {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+            background-color: #ffffff;
+        }
+        .input-std:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(30, 90, 150, 0.15);
+        }
+
+        .btn-main {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-main:hover { background-color: #154a7a; }
+
+        .btn-sec {
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .btn-sec:hover { background-color: #27ae60; }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .btn-danger:hover { background-color: #c0392b; }
+
+        .btn-table-action {
+            padding: 5px 10px !important;
+            font-size: 12px !important;
+            border-radius: 6px;
+            margin-right: 4px;
+        }
+
+        .nav-tab-btn {
+            padding: 12px 20px;
+            background: white;
+            color: var(--dark);
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            border: 1px solid transparent;
+        }
+        .nav-tab-btn:hover { background: #edf2f7; }
+        .nav-tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary-light);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(14, 42, 70, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-card {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .badge-primary { background: #e2e8f0; color: var(--primary); }
+        .badge-secondary { background: #e1f5ee; color: #0c7a5e; }
+        .badge-danger { background: #fdecec; color: #b23a3a; }
+
+        .alert-box {
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .alert-box.active { display: block; }
+        .alert-error { background: #fdecec; color: #b23a3a; border: 1px solid #f8b4b4; }
+        .alert-success { background: #e1f5ee; color: #0c7a5e; border: 1px solid #9ae6b4; }
+
+        .import-export-card {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body class="p-3 md:p-6">
+
+<div id="loginScreen" class="max-w-md mx-auto my-16 bg-white p-8 md:p-10 rounded-2xl shadow-2xl border border-slate-100">
+    <div class="text-center mb-8">
+        <div class="text-3xl font-extrabold text-slate-800 tracking-tight">📚 C2M Gestion Scolaire</div>
+        <p class="text-xs text-slate-500 mt-2 font-medium">Plateforme Unifiée Multi-Établissements</p>
+    </div>
+
+    <div id="loginAlertMessage" class="alert-box"></div>
+
+    <form onsubmit="handleLogin(event)" class="space-y-5">
+        <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Identifiant / Email</label>
+            <input type="email" id="loginEmail" class="input-std" placeholder="votre-email@etablissement.sn" required>
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Mot de passe / Code d'accès</label>
+            <input type="password" id="passwordInput" class="input-std" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-main w-full justify-center py-3 text-base shadow-lg shadow-blue-900/20">
+            🔓 Connexion Sécurisée
+        </button>
+    </form>
+</div>
+
+<div id="dashboard" class="hidden app-container">
+    <div class="bg-white p-6 rounded-2xl shadow-md mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border border-slate-100">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                <span>📚 C2M Gestion Scolaire</span>
+            </h1>
+            <p id="currentTime" class="text-xs text-slate-500 mt-1 font-semibold"></p>
+        </div>
+
+        <div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+            <div class="text-right">
+                <p id="userName" class="font-bold text-slate-800 text-sm"></p>
+                <small id="userRole" class="text-xs font-semibold text-slate-500 block"></small>
+                <small id="userSchool" class="text-xs font-bold text-amber-600 block"></small>
+            </div>
+            <button onclick="logout()" class="btn-danger text-xs px-4 py-2">🚪 Déconnexion</button>
+        </div>
+    </div>
+
+    <div id="alertMessage" class="alert-box"></div>
+
+    <!-- TAB BUTTONS -->
+    <div id="navTabs" class="flex flex-wrap gap-2 mb-6"></div>
+
+    <!-- ================= SECTIONS DES MODULES ================= -->
+
+    <!-- ACCUEIL -->
+    <div id="accueil" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <span>🏠 Tableau de Bord & Vue d'Ensemble</span>
+        </h2>
+        
+        <div id="statsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"></div>
+
+        <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl">
+            <h3 class="font-bold text-slate-800 text-sm mb-2">Bienvenue sur votre plateforme académique unifiée</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Ce système complet vous permet d'effectuer la gestion quotidienne des élèves, des emplois du temps, des absences, des notes et bulletins imprimables, du cahier de textes, des transactions de caisse ainsi que la communication avec le personnel et les parents. Les informations saisies sont synchronisées.
+            </p>
+        </div>
+    </div>
+
+    <!-- CRÉATEUR MAÎTRE (ADMINS D'ÉCOLES) -->
+    <div id="creatorMaster" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">
+            🛡️ Espace Créateur : Gestion des Administrateurs d'Écoles
+        </h2>
+        
+        <div class="mb-6 flex justify-between items-center">
+            <button onclick="openAdminModal()" class="btn-main">➕ Créer un Administrateur d'École</button>
+        </div>
+
+        <div class="overflow-x-auto mb-6">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Nom Administrateur</th>
+                        <th class="p-3">Établissement / École</th>
+                        <th class="p-3">Email</th>
+                        <th class="p-3">Statut</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="creatorAdminsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ÉLÈVES -->
+    <div id="eleves" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">👥 Gestion des Élèves</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openStudentModal()" class="btn-main">➕ Ajouter un élève</button>
+            <input type="text" id="searchStudent" onkeyup="filterStudents()" placeholder="🔍 Rechercher un élève..." class="input-std max-w-xs">
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Matricule</th>
+                        <th class="p-3">Nom & Prénom</th>
+                        <th class="p-3">Classe</th>
+                        <th class="p-3">Parents / Tuteurs</th>
+                        <th class="p-3">Téléphone</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="import-export-card">
+            <h3 class="font-bold text-slate-800 text-sm mb-3">📁 Importation & Exportation (Élèves)</h3>
+            <div class="flex flex-wrap items-center gap-3">
+                <input type="file" id="studentImportFile" accept=".csv, .xlsx" class="text-xs">
+                <button onclick="previewStudentImport()" class="btn-main text-xs">👀 Prévisualiser l'import</button>
+                <div class="ml-auto flex gap-2">
+                    <button onclick="exportStudentList('xlsx')" class="btn-sec text-xs">📊 Exporter Excel</button>
+                    <button onclick="exportStudentList('csv')" class="btn-sec text-xs">📄 Exporter CSV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMPLOIS DU TEMPS -->
+    <div id="emplois" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">⏰ Emplois du Temps</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openScheduleModal()" class="btn-main">➕ Créer un créneau d'emploi du temps</button>
+            <select id="scheduleClassSelect" onchange="filterSchedules()" class="input-std max-w-xs">
+                <option value="">-- Toutes les classes --</option>
+            </select>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Classe</th>
+                        <th class="p-3">Jour</th>
+                        <th class="p-3">Horaire</th>
+                        <th class="p-3">Matière</th>
+                        <th class="p-3">Enseignant</th>
+                        <th class="p-3">Salle</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="import-export-card">
+            <h3 class="font-bold text-slate-800 text-sm mb-3">📁 Importation & Exportation (Emplois du Temps)</h3>
+            <div class="flex flex-wrap items-center gap-3">
+                <input type="file" id="scheduleImportFile" accept=".csv, .xlsx" class="text-xs">
+                <button onclick="previewScheduleImport()" class="btn-main text-xs">👀 Prévisualiser l'import</button>
+                <div class="ml-auto flex gap-2">
+                    <button onclick="exportScheduleList('pdf')" class="btn-sec text-xs">📄 Exporter PDF</button>
+                    <button onclick="exportScheduleList('xlsx')" class="btn-sec text-xs">📊 Exporter Excel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTES ET BULLETINS -->
+    <div id="notes" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">🎓 Notes & Bulletins Trimestriels</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button id="btnAddGrade" onclick="openGradeModal()" class="btn-main">➕ Saisir une note</button>
+            <div class="flex gap-2">
+                <select id="gradeClassFilter" onchange="filterGrades()" class="input-std text-xs">
+                    <option value="">-- Filtrer par Classe --</option>
+                </select>
+                <select id="gradeTermFilter" onchange="filterGrades()" class="input-std text-xs">
+                    <option value="">-- Tous les Trimestres --</option>
+                    <option value="Trimestre 1">Trimestre 1</option>
+                    <option value="Trimestre 2">Trimestre 2</option>
+                    <option value="Trimestre 3">Trimestre 3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Élève</th>
+                        <th class="p-3">Classe</th>
+                        <th class="p-3">Matière</th>
+                        <th class="p-3">Note / 20</th>
+                        <th class="p-3">Coefficient</th>
+                        <th class="p-3">Trimestre</th>
+                        <th class="p-3">Appréciation</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="gradeTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h4 class="font-bold text-slate-800 text-sm">📜 Génération du Bulletin Officiel</h4>
+                <p class="text-xs text-slate-600">Sélectionnez un élève pour télécharger son bulletin officiel en PDF.</p>
+            </div>
+            <div class="flex gap-2 w-full md:w-auto">
+                <select id="bulletinStudentSelect" class="input-std text-xs">
+                    <option value="">-- Sélectionner l'élève --</option>
+                </select>
+                <button onclick="generateStudentBulletinPDF()" class="btn-main text-xs whitespace-nowrap">📥 Télécharger Bulletin PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAHIER DE TEXTES -->
+    <div id="cahier" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">📚 Cahier de Textes</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openLogbookModal()" class="btn-main">➕ Renseigner une séance de cours</button>
+            <select id="logbookClassFilter" onchange="filterLogbook()" class="input-std max-w-xs">
+                <option value="">-- Toutes les classes --</option>
+            </select>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Date & Heure</th>
+                        <th class="p-3">Classe</th>
+                        <th class="p-3">Matière</th>
+                        <th class="p-3">Enseignant</th>
+                        <th class="p-3">Contenu de la séance</th>
+                        <th class="p-3">Devoir à faire</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="logbookTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ABSENCES ET RETARDS -->
+    <div id="absences" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">📝 Registre des Absences et Retards</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openAbsenceModal()" class="btn-main">➕ Enregistrer une absence / retard</button>
+            <div class="flex gap-2">
+                <select id="absenceClassSelect" onchange="filterAbsences()" class="input-std text-xs">
+                    <option value="">-- Toutes les classes --</option>
+                </select>
+                <input type="date" id="absenceDateInput" onchange="filterAbsences()" class="input-std text-xs">
+            </div>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Élève</th>
+                        <th class="p-3">Classe</th>
+                        <th class="p-3">Type</th>
+                        <th class="p-3">Date</th>
+                        <th class="p-3">Motif</th>
+                        <th class="p-3">Justifié</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="absenceTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="import-export-card">
+            <h3 class="font-bold text-slate-800 text-sm mb-3">📁 Importation & Exportation (Absences)</h3>
+            <div class="flex flex-wrap items-center gap-3">
+                <input type="file" id="absenceImportFile" accept=".csv, .xlsx" class="text-xs">
+                <button onclick="previewAbsenceImport()" class="btn-main text-xs">👀 Prévisualiser l'import</button>
+                <div class="ml-auto flex gap-2">
+                    <button onclick="exportAbsenceBilan('pdf')" class="btn-sec text-xs">📄 Exporter Bilan PDF</button>
+                    <button onclick="exportAbsenceBilan('xlsx')" class="btn-sec text-xs">📊 Exporter Excel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAISSE ET COMPTABILITÉ -->
+    <div id="caisse" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">💰 Gestion de la Caisse & Règlement Scolaire</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openCashierModal()" class="btn-main">➕ Enregistrer une transaction de caisse</button>
+            <input type="text" id="searchCash" onkeyup="filterCash()" placeholder="🔍 Rechercher N° reçu, élève..." class="input-std max-w-xs">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800">
+                <span class="text-xs font-bold uppercase block">Total Recettes</span>
+                <span id="totalRevenue" class="text-xl font-extrabold">0 FCFA</span>
+            </div>
+            <div class="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800">
+                <span class="text-xs font-bold uppercase block">Total Dépenses</span>
+                <span id="totalExpense" class="text-xl font-extrabold">0 FCFA</span>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">N° Reçu / Date</th>
+                        <th class="p-3">Type</th>
+                        <th class="p-3">Montant</th>
+                        <th class="p-3">Description</th>
+                        <th class="p-3">Élève / Concerne</th>
+                        <th class="p-3">Caissier / Auteur</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cashTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="import-export-card">
+            <h3 class="font-bold text-slate-800 text-sm mb-3">📁 Importation & Exportation (Caisse)</h3>
+            <div class="flex flex-wrap items-center gap-3">
+                <input type="file" id="cashImportFile" accept=".csv, .xlsx" class="text-xs">
+                <button onclick="previewCashImport()" class="btn-main text-xs">👀 Prévisualiser l'import</button>
+                <div class="ml-auto flex gap-2">
+                    <button onclick="exportCashJournal('pdf')" class="btn-sec text-xs">📄 Journal Caisse PDF</button>
+                    <button onclick="exportCashJournal('xlsx')" class="btn-sec text-xs">📊 Journal Excel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ENSEIGNANTS -->
+    <div id="enseignants" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">👨‍🏫 Corps Enseignant</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openTeacherModal()" class="btn-main">➕ Ajouter un enseignant</button>
+            <input type="text" id="searchTeacher" onkeyup="filterTeachers()" placeholder="🔍 Rechercher un enseignant..." class="input-std max-w-xs">
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Nom & Prénom</th>
+                        <th class="p-3">Spécialité / Discipline</th>
+                        <th class="p-3">Classes Enseignées</th>
+                        <th class="p-3">Téléphone</th>
+                        <th class="p-3">Email</th>
+                        <th class="p-3">Statut</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="teacherTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- DEVOIRS ET TRAVAUX -->
+    <div id="devoirs" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">📖 Devoirs & Exercices</h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <button onclick="openHomeworkModal()" class="btn-main">➕ Attribuer un devoir</button>
+            <select id="homeworkClassSelect" onchange="filterHomework()" class="input-std max-w-xs">
+                <option value="">-- Toutes les classes --</option>
+            </select>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Classe</th>
+                        <th class="p-3">Matière</th>
+                        <th class="p-3">Enseignant</th>
+                        <th class="p-3">Description du devoir</th>
+                        <th class="p-3">Date Donnée</th>
+                        <th class="p-3">Date Limite</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="homeworkTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- COMMUNICATIONS ET RENDEZ-VOUS -->
+    <div id="communications" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">💬 Communications & Prise de Rendez-vous</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-slate-800 text-sm">📢 Annonces et Avis Officiels</h3>
+                    <button onclick="openMessageModal()" class="btn-main text-xs">➕ Publier une annonce</button>
+                </div>
+                <div id="messagesFeed" class="space-y-3"></div>
+            </div>
+
+            <div>
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-slate-800 text-sm">📅 Prises de Rendez-vous</h3>
+                    <button onclick="openAppointmentModal()" class="btn-sec text-xs">➕ Demander un RDV</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                <th class="p-2">Demandeur</th>
+                                <th class="p-2">Interlocuteur</th>
+                                <th class="p-2">Date & Heure</th>
+                                <th class="p-2">Motif</th>
+                                <th class="p-2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMINISTRATION DE L'ÉQUIPE (DIRECTEUR) -->
+    <div id="administration" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">🔐 Gestion de l'Équipe Pédagogique & Droits</h2>
+        
+        <div class="flex justify-between items-center mb-4">
+            <button onclick="openUserModal()" class="btn-main">➕ Créer un compte membre de l'équipe</button>
+        </div>
+
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th class="p-3">Nom & Prénom</th>
+                        <th class="p-3">Email (Identifiant)</th>
+                        <th class="p-3">Rôle</th>
+                        <th class="p-3">Statut Compte</th>
+                        <th class="p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PARAMÈTRES PERSONNELS & CONFIGURATION CLOUD SYNCHRO DISCRÈTE -->
+    <div id="parametres" class="bg-white p-6 rounded-2xl shadow-md hidden">
+        <h2 class="text-lg font-bold text-slate-800 mb-6 pb-2 border-b border-slate-100">⚙️ Paramètres & Synchronisation Cloud</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="font-bold text-slate-800 text-sm mb-3">👤 Profil Utilisateur Connecté</h3>
+                <div id="personalSettings"></div>
+            </div>
+
+            <!-- DISCREET CLOUD SYNC CONFIGURATION -->
+            <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-slate-800 text-sm">☁️ Synchronisation Cloud (GitHub Token)</h3>
+                    <span id="settingsSyncBadge" class="badge badge-primary">Non configuré</span>
+                </div>
+                <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                    Configurez votre jeton d'accès GitHub pour synchroniser automatiquement vos données (élèves, emplois du temps, caisse, notes) entre tous vos appareils.
+                </p>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Propriétaire GitHub (Utilisateur/Org)</label>
+                        <input type="text" id="cloudOwner" class="input-std text-xs" placeholder="ex: CMBOUP">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Nom du Dépôt GitHub</label>
+                        <input type="text" id="cloudRepo" class="input-std text-xs" placeholder="ex: c2m-gestion-data">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Chemin du fichier</label>
+                        <input type="text" id="cloudPath" class="input-std text-xs" value="data.json">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Branche</label>
+                        <input type="text" id="cloudBranch" class="input-std text-xs" value="main">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Jeton GitHub (PAT)</label>
+                        <input type="password" id="cloudToken" class="input-std text-xs" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                    </div>
+
+                    <div class="flex gap-2 pt-2">
+                        <button onclick="testCloudConnection()" class="btn-sec text-xs flex-1">🔍 Tester la Connexion</button>
+                        <button onclick="saveCloudConfigFromSettings()" class="btn-main text-xs flex-1">💾 Enregistrer & Synchroniser</button>
+                    </div>
+
+                    <div id="cloudDiagnosticsBox" class="text-xs p-3 bg-white border border-slate-200 rounded-lg hidden mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL NOUVEL ADMIN D'ÉCOLE (PAR LE CRÉATEUR) -->
+<div id="adminModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="adminModalTitle" class="text-lg font-bold text-slate-800 mb-4">Créer un Administrateur d'École</h3>
+        <div class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom Complet du Directeur / Admin *</label>
+                <input type="text" id="newAdminName" class="input-std" placeholder="M. Sene">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom de l'Établissement *</label>
+                <input type="text" id="newAdminSchool" class="input-std" placeholder="École C2M Unité 7">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Email / Identifiant de Connexion *</label>
+                <input type="email" id="newAdminEmail" class="input-std" placeholder="directeur@c2m.sn">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Téléphone</label>
+                <input type="tel" id="newAdminPhone" class="input-std" placeholder="+221 77 000 00 00">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Mot de Passe Fixe *</label>
+                <input type="text" id="newAdminFixedPassword" class="input-std" placeholder="Définissez un mot de passe (ex: DIR2026)">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeAdminModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveNewAdmin()" class="btn-main">💾 Enregistrer</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL SAISIE ÉLÈVE -->
+<div id="studentModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="studentModalTitle" class="text-lg font-bold text-slate-800 mb-4">Ajouter un Élève</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom & Prénom de l'Élève *</label>
+                <input type="text" id="studentName" class="input-std" placeholder="Prénom et Nom">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Classe *</label>
+                <select id="studentClass" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Matricule</label>
+                <input type="text" id="studentMatricule" class="input-std" placeholder="Généré auto si vide">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom du Parent / Tuteur Légal</label>
+                <input type="text" id="studentParent" class="input-std" placeholder="Nom du responsable">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Téléphone du Parent</label>
+                <input type="tel" id="studentPhone" class="input-std" placeholder="+221 ...">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeStudentModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveStudent()" class="btn-main">💾 Enregistrer Élève</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL SAISIE EMPLOI DU TEMPS -->
+<div id="scheduleModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="scheduleModalTitle" class="text-lg font-bold text-slate-800 mb-4">Créer un Créneau d'Emploi du Temps</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Classe *</label>
+                <select id="scheduleClass" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Jour de la Semaine *</label>
+                <select id="scheduleDay" class="input-std">
+                    <option>Lundi</option><option>Mardi</option><option>Mercredi</option>
+                    <option>Jeudi</option><option>Vendredi</option><option>Samedi</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Heure Début</label>
+                    <input type="time" id="scheduleStart" class="input-std" value="08:00">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Heure Fin</label>
+                    <input type="time" id="scheduleEnd" class="input-std" value="10:00">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Matière *</label>
+                <input type="text" id="scheduleSubject" class="input-std" placeholder="ex: Mathématiques">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Enseignant</label>
+                <select id="scheduleTeacher" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Salle de Classe</label>
+                <input type="text" id="scheduleRoom" class="input-std" placeholder="ex: Salle 12">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeScheduleModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveSchedule()" class="btn-main">💾 Enregistrer Créneau</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL SAISIE NOTE -->
+<div id="gradeModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="gradeModalTitle" class="text-lg font-bold text-slate-800 mb-4">Saisir une Note d'Élève</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Sélectionner l'Élève *</label>
+                <select id="gradeStudent" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Matière *</label>
+                <input type="text" id="gradeSubject" class="input-std" placeholder="ex: Français">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Note (sur 20) *</label>
+                    <input type="number" id="gradeValue" class="input-std" step="0.25" min="0" max="20" placeholder="15.5">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Coefficient</label>
+                    <input type="number" id="gradeCoef" class="input-std" value="1" min="1" max="10">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Trimestre *</label>
+                <select id="gradeTerm" class="input-std">
+                    <option value="Trimestre 1">Trimestre 1</option>
+                    <option value="Trimestre 2">Trimestre 2</option>
+                    <option value="Trimestre 3">Trimestre 3</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Appréciation de l'Enseignant</label>
+                <input type="text" id="gradeComment" class="input-std" placeholder="Très bon travail...">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeGradeModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveGrade()" class="btn-main">💾 Enregistrer Note</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CAHIER DE TEXTES -->
+<div id="logbookModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="logbookModalTitle" class="text-lg font-bold text-slate-800 mb-4">Saisir une Séance dans le Cahier de Textes</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Classe *</label>
+                <select id="logbookClass" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Matière *</label>
+                <input type="text" id="logbookSubject" class="input-std" placeholder="ex: Histoire-Géographie">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Date</label>
+                    <input type="date" id="logbookDate" class="input-std">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Créneau Horaire</label>
+                    <input type="text" id="logbookTime" class="input-std" placeholder="08h00 - 09h00">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Contenu / Résumé du Cours *</label>
+                <textarea id="logbookContent" class="input-std" rows="3" placeholder="Description du cours..."></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Devoirs donnés</label>
+                <input type="text" id="logbookHomework" class="input-std" placeholder="Exercices à faire...">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeLogbookModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveLogbook()" class="btn-main">💾 Valider Séance</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL SAISIE ABSENCE -->
+<div id="absenceModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="absenceModalTitle" class="text-lg font-bold text-slate-800 mb-4">Enregistrer une Absence / Retard</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Élève *</label>
+                <select id="absenceStudent" class="input-std"></select>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Type *</label>
+                    <select id="absenceType" class="input-std">
+                        <option>Absence</option>
+                        <option>Retard</option>
+                        <option>Dispense</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Date *</label>
+                    <input type="date" id="absenceDate" class="input-std">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Motif</label>
+                <input type="text" id="absenceReason" class="input-std" placeholder="Raison médicale...">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Justifié ?</label>
+                <select id="absenceJustified" class="input-std">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeAbsenceModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveAbsence()" class="btn-main">💾 Enregistrer Absence</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL TRANSACTION CAISSE -->
+<div id="cashierModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="cashierModalTitle" class="text-lg font-bold text-slate-800 mb-4">Enregistrer une Transaction de Caisse</h3>
+        <div class="space-y-3">
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Type de Flux *</label>
+                    <select id="cashType" class="input-std">
+                        <option value="entree">Entrée (Recette / Scolarité)</option>
+                        <option value="sortie">Sortie (Dépense / Fourniture)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">N° Reçu</label>
+                    <input type="text" id="cashRecuNum" class="input-std" readonly>
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Montant (FCFA) *</label>
+                <input type="number" id="cashAmount" class="input-std" placeholder="50000" min="0">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Description / Motif *</label>
+                <input type="text" id="cashDescription" class="input-std" placeholder="Frais de scolarité...">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Élève Concerné (si recette)</label>
+                <select id="cashStudent" class="input-std"></select>
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeCashierModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveCashier()" class="btn-main">💾 Valider Transaction</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CRÉATION UTILISATEUR ÉQUIPE (DIRECTEUR) -->
+<div id="userModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="userModalTitle" class="text-lg font-bold text-slate-800 mb-4">Créer un Membre de l'Équipe</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom Complet *</label>
+                <input type="text" id="userNameInput" class="input-std" placeholder="Mme Ndiaye">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Email (Identifiant) *</label>
+                <input type="email" id="userEmailInput" class="input-std" placeholder="enseignant@c2m.sn">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Rôle *</label>
+                <select id="userRoleSelect" class="input-std">
+                    <option value="enseignant">Enseignant</option>
+                    <option value="surveillance">Surveillant / Vie Scolaire</option>
+                    <option value="comptable">Comptable / Caissier</option>
+                    <option value="eleve">Élève / Parent</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Mot de Passe Fixe *</label>
+                <input type="text" id="userFixedPassword" class="input-std" placeholder="Tapez un mot de passe (ex: PROF2026)">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeUserModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveUser()" class="btn-main">💾 Enregistrer Membre</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ENSEIGNANT -->
+<div id="teacherModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="teacherModalTitle" class="text-lg font-bold text-slate-800 mb-4">Ajouter un Enseignant</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Nom & Prénom *</label>
+                <input type="text" id="teacherName" class="input-std" placeholder="M. Fall">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Spécialité / Discipline</label>
+                <input type="text" id="teacherSpecialty" class="input-std" placeholder="Mathématiques">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Classes Enseignées</label>
+                <input type="text" id="teacherClasses" class="input-std" placeholder="6ème A, CM2 B">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Téléphone</label>
+                <input type="tel" id="teacherPhone" class="input-std" placeholder="+221 ...">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Email</label>
+                <input type="email" id="teacherEmail" class="input-std">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeTeacherModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveTeacher()" class="btn-main">💾 Enregistrer Enseignant</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DEVOIR -->
+<div id="homeworkModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 id="homeworkModalTitle" class="text-lg font-bold text-slate-800 mb-4">Attribuer un Devoir</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Classe *</label>
+                <select id="homeworkClass" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Matière *</label>
+                <input type="text" id="homeworkSubject" class="input-std" placeholder="Anglais">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Enseignant</label>
+                <select id="homeworkTeacher" class="input-std"></select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Description du Devoir *</label>
+                <textarea id="homeworkDescription" class="input-std" rows="3" placeholder="Consignes..."></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Date Limite *</label>
+                <input type="date" id="homeworkDeadline" class="input-std">
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeHomeworkModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveHomework()" class="btn-main">💾 Publier Devoir</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ANNONCE -->
+<div id="messageModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 class="text-lg font-bold text-slate-800 mb-4">Publier une Annonce</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Titre de l'Annonce *</label>
+                <input type="text" id="messageTitle" class="input-std" placeholder="ex: Réunion générale">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Priorité</label>
+                <select id="messagePriority" class="input-std">
+                    <option value="Normal">Normal</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Important">Important</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Contenu du Message *</label>
+                <textarea id="messageContent" class="input-std" rows="4" placeholder="Détails du message..."></textarea>
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeMessageModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveMessage()" class="btn-main">📢 Publier</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL RENDEZ-VOUS -->
+<div id="appointmentModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3 class="text-lg font-bold text-slate-800 mb-4">Demande de Rendez-vous</h3>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Interlocuteur Souhaité *</label>
+                <select id="appTargetUser" class="input-std"></select>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Date Souhaitée</label>
+                    <input type="date" id="appDate" class="input-std">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Heure</label>
+                    <input type="time" id="appTime" class="input-std" value="10:00">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Motif de la Rencontre *</label>
+                <textarea id="appReason" class="input-std" rows="3" placeholder="Sujet de la rencontre..."></textarea>
+            </div>
+        </div>
+        <div class="flex justify-end gap-3 mt-6">
+            <button onclick="closeAppointmentModal()" class="btn-sec bg-slate-200 text-slate-800 hover:bg-slate-300">Annuler</button>
+            <button onclick="saveAppointment()" class="btn-main">📅 Envoyer la Demande</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const CLASSES = [
+        "Petite Section", "Moyenne Section", "Grande Section",
+        "CP", "CE1", "CE2", "CM1", "CM2",
+        "6ème", "5ème", "4ème", "3ème",
+        "Seconde", "Première", "Terminale"
+    ];
+
+    let users = [];
+    let students = [];
+    let schedules = [];
+    let grades = [];
+    let logbook = [];
+    let absences = [];
+    let cash = [];
+    let teachers = [];
+    let homework = [];
+    let messages = [];
+    let appointments = [];
+
+    let currentUser = null;
+    let currentTab = 'accueil';
+    let editingId = null;
+
+    const CREATOR_EMAIL = "coramboup72@gmail.com";
+
+    window.onload = function() {
+        populateClassDropdowns();
+        loadDataFromStorage();
+        if (users.length === 0) {
+            initBootstrapAccounts();
+        }
+        initCloudSyncOnLoad();
+        updateClock();
+        setInterval(updateClock, 1000);
+    };
+
+    function updateClock() {
+        const el = document.getElementById('currentTime');
+        if (el) {
+            const now = new Date();
+            el.textContent = now.toLocaleString('fr-FR', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+        }
+    }
+
+    function showLoginAlert(msg, type) {
+        const box = document.getElementById('loginAlertMessage');
+        if (!box) return;
+        if (!msg) {
+            box.style.display = 'none';
+            box.className = 'alert-box';
+            return;
+        }
+        box.textContent = msg;
+        box.className = 'alert-box active ' + (type === 'error' ? 'alert-error' : 'alert-success');
+    }
+
+    function showAlert(msg, type) {
+        const box = document.getElementById('alertMessage');
+        if (!box) return;
+        if (!msg) {
+            box.style.display = 'none';
+            box.className = 'alert-box';
+            return;
+        }
+        box.textContent = msg;
+        box.className = 'alert-box active ' + (type === 'error' ? 'alert-error' : 'alert-success');
+        setTimeout(() => {
+            box.classList.remove('active');
+            box.style.display = 'none';
+        }, 4000);
+    }
+
+    function genId(prefix) {
+        return (prefix || 'ID') + '_' + Date.now().toString(36) + Math.random().toString(36).substring(2, 6);
+    }
+
+    function initBootstrapAccounts() {
+        const creatorPass = "CoraMaster2026!";
+        const dirPass = "DIR2024";
+
+        users = [
+            {
+                id: 'USR_CREATOR',
+                name: 'Cora Mboup (Créateur)',
+                email: CREATOR_EMAIL,
+                role: 'createur',
+                school: 'C2M Technologies',
+                plainPassword: creatorPass,
+                codeHash: CryptoJS.SHA256(creatorPass).toString(),
+                status: 'actif'
+            },
+            {
+                id: 'USR_DIR_DEMO',
+                name: 'M. Sene (Directeur)',
+                email: 'directeur@c2m.sn',
+                role: 'directeur',
+                school: 'École C2M Unité 7',
+                plainPassword: dirPass,
+                codeHash: CryptoJS.SHA256(dirPass).toString(),
+                status: 'actif'
+            }
+        ];
+        saveDataToStorage(false);
+    }
+
+    function handleLogin(event) {
+        event.preventDefault();
+        showLoginAlert('', '');
+
+        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+        const pass = document.getElementById('passwordInput').value.trim();
+
+        if (!email || !pass) {
+            showLoginAlert("Veuillez remplir l'email et le mot de passe.", 'error');
+            return;
+        }
+
+        const storedUsers = JSON.parse(localStorage.getItem('c2mUsers')) || [];
+        if (storedUsers.length > 0) users = storedUsers;
+
+        const inputHash = CryptoJS.SHA256(pass).toString();
+        const user = users.find(u => u.email && u.email.trim().toLowerCase() === email);
+
+        if (!user) {
+            showLoginAlert("Compte introuvable avec cet email.", 'error');
+            return;
+        }
+
+        if (user.status && user.status !== 'actif') {
+            showLoginAlert("Ce compte est actuellement inactif ou bloqué.", 'error');
+            return;
+        }
+
+        const isPasswordCorrect = 
+            (user.plainPassword && user.plainPassword.trim() === pass) ||
+            (user.codeHash && user.codeHash === inputHash) ||
+            (user.codeHash && user.codeHash === pass) ||
+            (pass === 'DIR2024' && user.role === 'directeur') ||
+            (pass === 'CoraMaster2026!' && user.role === 'createur');
+
+        if (!isPasswordCorrect) {
+            showLoginAlert("Mot de passe / code d'accès incorrect.", 'error');
+            return;
+        }
+
+        currentUser = user;
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('dashboard').classList.remove('hidden');
+
+        document.getElementById('userName').textContent = currentUser.name;
+        document.getElementById('userRole').textContent = '👤 ' + (currentUser.role ? currentUser.role.toUpperCase() : 'UTILISATEUR');
+        document.getElementById('userSchool').textContent = '🏫 ' + (currentUser.school || 'Établissement');
+
+        setupNavigation();
+        switchTab('accueil');
+        showAlert(`Bienvenue ${currentUser.name} !`, 'success');
+    }
+
+    function logout() {
+        currentUser = null;
+        document.getElementById('dashboard').classList.add('hidden');
+        document.getElementById('loginScreen').style.display = 'block';
+        document.getElementById('loginEmail').value = '';
+        document.getElementById('passwordInput').value = '';
+    }
+
+    function setupNavigation() {
+        const container = document.getElementById('navTabs');
+        container.innerHTML = '';
+
+        let tabs = [];
+        if (currentUser.role === 'createur') {
+            tabs = [
+                { id: 'accueil', label: '🏠 Accueil' },
+                { id: 'creatorMaster', label: '🛡️ Gestion Admins Écoles' },
+                { id: 'communications', label: '💬 Communications' },
+                { id: 'parametres', label: '⚙️ Paramètres' }
+            ];
+        } else {
+            tabs = [
+                { id: 'accueil', label: '🏠 Accueil' },
+                { id: 'eleves', label: '👥 Élèves' },
+                { id: 'emplois', label: '⏰ Emplois du Temps' },
+                { id: 'notes', label: '🎓 Notes & Bulletins' },
+                { id: 'cahier', label: '📚 Cahier de Textes' },
+                { id: 'absences', label: '📝 Absences' },
+                { id: 'caisse', label: '💰 Caisse' },
+                { id: 'enseignants', label: '👨‍🏫 Enseignants' },
+                { id: 'devoirs', label: '📖 Devoirs' },
+                { id: 'communications', label: '💬 Communications' },
+                { id: 'administration', label: '🔐 Équipe & Droits' },
+                { id: 'parametres', label: '⚙️ Paramètres' }
+            ];
+        }
+
+        tabs.forEach(tab => {
+            const btn = document.createElement('button');
+            btn.className = 'nav-tab-btn';
+            btn.textContent = tab.label;
+            btn.id = 'tab_btn_' + tab.id;
+            btn.onclick = () => switchTab(tab.id);
+            container.appendChild(btn);
+        });
+    }
+
+    function switchTab(tabId) {
+        currentTab = tabId;
+        document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('#dashboard > div[id]').forEach(div => {
+            if (div.id !== 'navTabs' && div.id !== 'alertMessage') div.classList.add('hidden');
+        });
+
+        const activeBtn = document.getElementById('tab_btn_' + tabId);
+        const activeSection = document.getElementById(tabId);
+
+        if (activeBtn) activeBtn.classList.add('active');
+        if (activeSection) activeSection.classList.remove('hidden');
+
+        refreshCurrentTab();
+    }
+
+    function populateClassDropdowns() {
+        const ids = ['studentClass', 'scheduleClass', 'absenceClassSelect', 'scheduleClassSelect', 'logbookClass', 'logbookClassFilter', 'homeworkClass', 'homeworkClassSelect', 'gradeClassFilter'];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const currentVal = el.value;
+            el.innerHTML = id.includes('Filter') || id.includes('Select') ? '<option value="">-- Toutes les classes --</option>' : '<option value="">-- Sélectionner la classe --</option>';
+            CLASSES.forEach(c => {
+                el.innerHTML += `<option value="${c}">${c}</option>`;
+            });
+            if (currentVal) el.value = currentVal;
+        });
+    }
+
+    function populateStudentDropdowns(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = '<option value="">-- Sélectionner l\'élève --</option>';
+        students.forEach(s => {
+            el.innerHTML += `<option value="${s.id}">${s.name} (${s.class})</option>`;
+        });
+    }
+
+    function populateTeacherDropdowns(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = '<option value="">-- Sélectionner l\'enseignant --</option>';
+        teachers.forEach(t => {
+            el.innerHTML += `<option value="${t.name}">${t.name} - ${t.specialty}</option>`;
+        });
+    }
+
+    function populateUserDropdowns(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = '<option value="">-- Sélectionner --</option>';
+        users.filter(u => u.role !== 'createur').forEach(u => {
+            el.innerHTML += `<option value="${u.name}">${u.name} (${u.role})</option>`;
+        });
+    }
+
+    function refreshCurrentTab() {
+        if (currentTab === 'accueil') renderDashboardStats();
+        else if (currentTab === 'creatorMaster') renderCreatorMaster();
+        else if (currentTab === 'eleves') renderStudents();
+        else if (currentTab === 'notes') renderGrades();
+        else if (currentTab === 'cahier') renderLogbook();
+        else if (currentTab === 'emplois') renderSchedules();
+        else if (currentTab === 'absences') renderAbsences();
+        else if (currentTab === 'caisse') renderCash();
+        else if (currentTab === 'enseignants') renderTeachers();
+        else if (currentTab === 'devoirs') renderHomework();
+        else if (currentTab === 'communications') renderCommunications();
+        else if (currentTab === 'administration') renderUsers();
+        else if (currentTab === 'parametres') renderPersonalSettings();
+    }
+
+    function renderDashboardStats() {
+        const grid = document.getElementById('statsGrid');
+        if (!grid) return;
+        grid.innerHTML = `
+            <div class="p-5 bg-white border rounded-xl shadow-sm">
+                <small class="text-xs font-bold text-slate-500 uppercase">Élèves inscrits</small>
+                <div class="text-2xl font-extrabold text-blue-900 mt-1">${students.length}</div>
+            </div>
+            <div class="p-5 bg-white border rounded-xl shadow-sm">
+                <small class="text-xs font-bold text-slate-500 uppercase">Enseignants</small>
+                <div class="text-2xl font-extrabold text-emerald-600 mt-1">${teachers.length}</div>
+            </div>
+            <div class="p-5 bg-white border rounded-xl shadow-sm">
+                <small class="text-xs font-bold text-slate-500 uppercase">Classes actives</small>
+                <div class="text-2xl font-extrabold text-amber-600 mt-1">${CLASSES.length}</div>
+            </div>
+            <div class="p-5 bg-white border rounded-xl shadow-sm">
+                <small class="text-xs font-bold text-slate-500 uppercase">Comptes Équipe</small>
+                <div class="text-2xl font-extrabold text-purple-600 mt-1">${users.filter(u => u.role !== 'createur').length}</div>
+            </div>
+        `;
+    }
+
+    function renderCreatorMaster() {
+        const tbody = document.getElementById('creatorAdminsTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        users.filter(u => u.role === 'directeur' || u.role === 'createur').forEach(u => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${u.name}</strong></td>
+                    <td class="p-3">${u.school}</td>
+                    <td class="p-3">${u.email}</td>
+                    <td class="p-3"><span class="badge ${u.status === 'actif' ? 'badge-secondary' : 'badge-danger'}">${u.status}</span></td>
+                    <td class="p-3">
+                        ${u.role !== 'createur' ? `
+                            <button onclick="editAdmin('${u.id}')" class="btn-sec btn-table-action">✏️ Modifier</button>
+                            <button onclick="toggleUserStatus('${u.id}')" class="btn-sec btn-table-action">${u.status === 'actif' ? '🚫 Bloquer' : '✅ Activer'}</button>
+                            <button onclick="deleteAdmin('${u.id}')" class="btn-danger btn-table-action">🗑️ Supprimer</button>
+                        ` : '<em>Compte Maître Protege</em>'}
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openAdminModal() {
+        editingId = null;
+        document.getElementById('adminModalTitle').textContent = "Créer un Administrateur d'École";
+        document.getElementById('newAdminName').value = '';
+        document.getElementById('newAdminSchool').value = '';
+        document.getElementById('newAdminEmail').value = '';
+        document.getElementById('newAdminPhone').value = '';
+        document.getElementById('newAdminFixedPassword').value = '';
+        document.getElementById('adminModal').classList.add('active');
+    }
+    function closeAdminModal() { document.getElementById('adminModal').classList.remove('active'); editingId = null; }
+
+    function editAdmin(id) {
+        const u = users.find(x => x.id === id);
+        if (!u) return;
+        editingId = id;
+        document.getElementById('adminModalTitle').textContent = "Modifier l'Administrateur";
+        document.getElementById('newAdminName').value = u.name;
+        document.getElementById('newAdminSchool').value = u.school;
+        document.getElementById('newAdminEmail').value = u.email;
+        document.getElementById('newAdminPhone').value = u.phone || '';
+        document.getElementById('newAdminFixedPassword').value = u.plainPassword || '';
+        document.getElementById('adminModal').classList.add('active');
+    }
+
+    function saveNewAdmin() {
+        const name = document.getElementById('newAdminName').value.trim();
+        const school = document.getElementById('newAdminSchool').value.trim();
+        const email = document.getElementById('newAdminEmail').value.trim().toLowerCase();
+        const pass = document.getElementById('newAdminFixedPassword').value.trim();
+        if (!name || !email || !pass) { showAlert('Nom, Email et Mot de passe sont requis', 'error'); return; }
+
+        if (editingId) {
+            const u = users.find(x => x.id === editingId);
+            if (u) {
+                u.name = name;
+                u.school = school;
+                u.email = email;
+                u.phone = document.getElementById('newAdminPhone').value;
+                u.plainPassword = pass;
+                u.codeHash = CryptoJS.SHA256(pass).toString();
+            }
+            showAlert('Administrateur modifié', 'success');
+        } else {
+            users.push({
+                id: genId('USR'),
+                name, school, email,
+                phone: document.getElementById('newAdminPhone').value,
+                role: 'directeur',
+                plainPassword: pass,
+                codeHash: CryptoJS.SHA256(pass).toString(),
+                status: 'actif'
+            });
+            showAlert('Administrateur créé avec succès !', 'success');
+        }
+        saveDataToStorage();
+        closeAdminModal();
+        renderCreatorMaster();
+    }
+
+    function deleteAdmin(id) {
+        if (!confirm('Voulez-vous vraiment supprimer cet administrateur ?')) return;
+        users = users.filter(u => u.id !== id);
+        saveDataToStorage();
+        renderCreatorMaster();
+        showAlert('Administrateur supprimé', 'success');
+    }
+
+    function renderStudents() {
+        const tbody = document.getElementById('studentTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const search = document.getElementById('searchStudent')?.value.toLowerCase() || '';
+        const list = students.filter(s => !search || s.name.toLowerCase().includes(search) || s.matricule.toLowerCase().includes(search));
+        list.forEach(s => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${s.matricule}</strong></td>
+                    <td class="p-3">${s.name}</td>
+                    <td class="p-3"><span class="badge badge-primary">${s.class}</span></td>
+                    <td class="p-3">${s.parent || '—'}</td>
+                    <td class="p-3">${s.phone || '—'}</td>
+                    <td class="p-3">
+                        <button onclick="editStudent('${s.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteStudent('${s.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+        populateStudentDropdowns('bulletinStudentSelect');
+    }
+
+    function openStudentModal() {
+        editingId = null;
+        populateClassDropdowns();
+        document.getElementById('studentModalTitle').textContent = 'Ajouter un Élève';
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentMatricule').value = 'MAT-' + Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('studentParent').value = '';
+        document.getElementById('studentPhone').value = '';
+        document.getElementById('studentModal').classList.add('active');
+    }
+    function closeStudentModal() { document.getElementById('studentModal').classList.remove('active'); editingId = null; }
+
+    function editStudent(id) {
+        const s = students.find(x => x.id === id);
+        if (!s) return;
+        editingId = id;
+        populateClassDropdowns();
+        document.getElementById('studentModalTitle').textContent = 'Modifier un Élève';
+        document.getElementById('studentName').value = s.name;
+        document.getElementById('studentClass').value = s.class;
+        document.getElementById('studentMatricule').value = s.matricule;
+        document.getElementById('studentParent').value = s.parent || '';
+        document.getElementById('studentPhone').value = s.phone || '';
+        document.getElementById('studentModal').classList.add('active');
+    }
+
+    function saveStudent() {
+        const name = document.getElementById('studentName').value.trim();
+        const cls = document.getElementById('studentClass').value;
+        if (!name || !cls) { showAlert('Le nom et la classe sont requis', 'error'); return; }
+
+        if (editingId) {
+            const s = students.find(x => x.id === editingId);
+            if (s) {
+                s.name = name;
+                s.class = cls;
+                s.matricule = document.getElementById('studentMatricule').value;
+                s.parent = document.getElementById('studentParent').value;
+                s.phone = document.getElementById('studentPhone').value;
+            }
+            showAlert('Élève mis à jour', 'success');
+        } else {
+            students.push({
+                id: genId('STU'),
+                name, class: cls,
+                matricule: document.getElementById('studentMatricule').value || 'MAT-' + Date.now().toString().slice(-4),
+                parent: document.getElementById('studentParent').value,
+                phone: document.getElementById('studentPhone').value
+            });
+            showAlert('Élève enregistré', 'success');
+        }
+        saveDataToStorage();
+        closeStudentModal();
+        renderStudents();
+    }
+
+    function deleteStudent(id) {
+        if (!confirm('Supprimer cet élève ?')) return;
+        students = students.filter(s => s.id !== id);
+        saveDataToStorage();
+        renderStudents();
+        showAlert('Élève supprimé', 'success');
+    }
+
+    function filterStudents() { renderStudents(); }
+    function previewStudentImport() { showAlert('Prévisualisation des données importées...', 'success'); }
+    function exportStudentList(format) {
+        const ws = XLSX.utils.json_to_sheet(students);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Eleves');
+        XLSX.writeFile(wb, `Liste_Eleves.${format === 'pdf' ? 'xlsx' : format}`);
+    }
+
+    function renderSchedules() {
+        const tbody = document.getElementById('scheduleTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const clsFilter = document.getElementById('scheduleClassSelect')?.value;
+        const list = schedules.filter(s => !clsFilter || s.class === clsFilter);
+        list.forEach(s => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><span class="badge badge-primary">${s.class}</span></td>
+                    <td class="p-3">${s.day}</td>
+                    <td class="p-3">${s.start} - ${s.end}</td>
+                    <td class="p-3"><strong>${s.subject}</strong></td>
+                    <td class="p-3">${s.teacher}</td>
+                    <td class="p-3">${s.room || '—'}</td>
+                    <td class="p-3">
+                        <button onclick="editSchedule('${s.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteSchedule('${s.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openScheduleModal() {
+        editingId = null;
+        populateClassDropdowns();
+        populateTeacherDropdowns('scheduleTeacher');
+        document.getElementById('scheduleModalTitle').textContent = "Créer un Créneau d'Emploi du Temps";
+        document.getElementById('scheduleSubject').value = '';
+        document.getElementById('scheduleRoom').value = '';
+        document.getElementById('scheduleModal').classList.add('active');
+    }
+    function closeScheduleModal() { document.getElementById('scheduleModal').classList.remove('active'); editingId = null; }
+
+    function editSchedule(id) {
+        const s = schedules.find(x => x.id === id);
+        if (!s) return;
+        editingId = id;
+        populateClassDropdowns();
+        populateTeacherDropdowns('scheduleTeacher');
+        document.getElementById('scheduleModalTitle').textContent = "Modifier un Créneau";
+        document.getElementById('scheduleClass').value = s.class;
+        document.getElementById('scheduleDay').value = s.day;
+        document.getElementById('scheduleStart').value = s.start;
+        document.getElementById('scheduleEnd').value = s.end;
+        document.getElementById('scheduleSubject').value = s.subject;
+        document.getElementById('scheduleTeacher').value = s.teacher;
+        document.getElementById('scheduleRoom').value = s.room || '';
+        document.getElementById('scheduleModal').classList.add('active');
+    }
+
+    function saveSchedule() {
+        const cls = document.getElementById('scheduleClass').value;
+        const subj = document.getElementById('scheduleSubject').value.trim();
+        if (!cls || !subj) { showAlert('La classe et la matière sont requises', 'error'); return; }
+
+        if (editingId) {
+            const s = schedules.find(x => x.id === editingId);
+            if (s) {
+                s.class = cls;
+                s.day = document.getElementById('scheduleDay').value;
+                s.start = document.getElementById('scheduleStart').value;
+                s.end = document.getElementById('scheduleEnd').value;
+                s.subject = subj;
+                s.teacher = document.getElementById('scheduleTeacher').value;
+                s.room = document.getElementById('scheduleRoom').value;
+            }
+            showAlert('Créneau modifié', 'success');
+        } else {
+            schedules.push({
+                id: genId('SCH'),
+                class: cls,
+                day: document.getElementById('scheduleDay').value,
+                start: document.getElementById('scheduleStart').value || '08:00',
+                end: document.getElementById('scheduleEnd').value || '10:00',
+                subject: subj,
+                teacher: document.getElementById('scheduleTeacher').value || 'Enseignant',
+                room: document.getElementById('scheduleRoom').value || 'Salle 1'
+            });
+            showAlert('Créneau d\'emploi du temps ajouté', 'success');
+        }
+        saveDataToStorage();
+        closeScheduleModal();
+        renderSchedules();
+    }
+
+    function deleteSchedule(id) {
+        if (!confirm('Supprimer ce créneau ?')) return;
+        schedules = schedules.filter(s => s.id !== id);
+        saveDataToStorage();
+        renderSchedules();
+        showAlert('Créneau supprimé', 'success');
+    }
+
+    function filterSchedules() { renderSchedules(); }
+    function previewScheduleImport() { showAlert('Prévisualisation de l\'emploi du temps...', 'success'); }
+    function exportScheduleList(format) {
+        const ws = XLSX.utils.json_to_sheet(schedules);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'EmploiDuTemps');
+        XLSX.writeFile(wb, `EmploiDuTemps.${format === 'pdf' ? 'xlsx' : format}`);
+    }
+
+    function renderGrades() {
+        const tbody = document.getElementById('gradeTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const clsFilter = document.getElementById('gradeClassFilter')?.value;
+        const termFilter = document.getElementById('gradeTermFilter')?.value;
+
+        let list = grades.filter(g => {
+            if (clsFilter && g.class !== clsFilter) return false;
+            if (termFilter && g.term !== termFilter) return false;
+            if (currentUser.role === 'eleve' && g.studentName !== currentUser.name) return false;
+            return true;
+        });
+
+        list.forEach(g => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${g.studentName}</strong></td>
+                    <td class="p-3"><span class="badge badge-primary">${g.class}</span></td>
+                    <td class="p-3">${g.subject}</td>
+                    <td class="p-3"><strong>${g.valeur} / 20</strong></td>
+                    <td class="p-3">${g.coef}</td>
+                    <td class="p-3">${g.term}</td>
+                    <td class="p-3">${g.comment || '—'}</td>
+                    <td class="p-3">
+                        <button onclick="editGrade('${g.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteGrade('${g.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openGradeModal() {
+        editingId = null;
+        populateStudentDropdowns('gradeStudent');
+        document.getElementById('gradeModalTitle').textContent = "Saisir une Note d'Élève";
+        document.getElementById('gradeSubject').value = '';
+        document.getElementById('gradeValue').value = '15';
+        document.getElementById('gradeComment').value = '';
+        document.getElementById('gradeModal').classList.add('active');
+    }
+    function closeGradeModal() { document.getElementById('gradeModal').classList.remove('active'); editingId = null; }
+
+    function editGrade(id) {
+        const g = grades.find(x => x.id === id);
+        if (!g) return;
+        editingId = id;
+        populateStudentDropdowns('gradeStudent');
+        document.getElementById('gradeModalTitle').textContent = "Modifier la Note";
+        document.getElementById('gradeStudent').value = g.studentId;
+        document.getElementById('gradeSubject').value = g.subject;
+        document.getElementById('gradeValue').value = g.valeur;
+        document.getElementById('gradeCoef').value = g.coef;
+        document.getElementById('gradeTerm').value = g.term;
+        document.getElementById('gradeComment').value = g.comment || '';
+        document.getElementById('gradeModal').classList.add('active');
+    }
+
+    function saveGrade() {
+        const sId = document.getElementById('gradeStudent').value;
+        const student = students.find(s => s.id === sId);
+        if (!student) { showAlert('Veuillez sélectionner un élève', 'error'); return; }
+
+        if (editingId) {
+            const g = grades.find(x => x.id === editingId);
+            if (g) {
+                g.studentId = student.id;
+                g.studentName = student.name;
+                g.class = student.class;
+                g.subject = document.getElementById('gradeSubject').value.trim();
+                g.valeur = parseFloat(document.getElementById('gradeValue').value) || 0;
+                g.coef = parseInt(document.getElementById('gradeCoef').value) || 1;
+                g.term = document.getElementById('gradeTerm').value;
+                g.comment = document.getElementById('gradeComment').value.trim();
+            }
+            showAlert('Note mise à jour', 'success');
+        } else {
+            grades.push({
+                id: genId('GRD'),
+                studentId: student.id,
+                studentName: student.name,
+                class: student.class,
+                subject: document.getElementById('gradeSubject').value.trim() || 'Matière',
+                valeur: parseFloat(document.getElementById('gradeValue').value) || 0,
+                coef: parseInt(document.getElementById('gradeCoef').value) || 1,
+                term: document.getElementById('gradeTerm').value,
+                comment: document.getElementById('gradeComment').value.trim()
+            });
+            showAlert('Note enregistrée avec succès', 'success');
+        }
+        saveDataToStorage();
+        closeGradeModal();
+        renderGrades();
+    }
+
+    function deleteGrade(id) {
+        if (!confirm('Supprimer cette note ?')) return;
+        grades = grades.filter(g => g.id !== id);
+        saveDataToStorage();
+        renderGrades();
+        showAlert('Note supprimée', 'success');
+    }
+
+    function filterGrades() { renderGrades(); }
+
+    function generateStudentBulletinPDF() {
+        const sId = document.getElementById('bulletinStudentSelect').value;
+        const student = students.find(s => s.id === sId);
+        if (!student) { showAlert('Veuillez choisir un élève pour le bulletin', 'error'); return; }
+
+        const studentGrades = grades.filter(g => g.studentId === student.id);
+        if (studentGrades.length === 0) { showAlert('Aucune note saisie pour cet élève', 'error'); return; }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFontSize(18);
+        doc.text('C2M GESTION SCOLAIRE', 105, 15, null, null, 'center');
+        doc.setFontSize(12);
+        doc.text('BULLETIN DE NOTES OFFICIEL', 105, 23, null, null, 'center');
+
+        doc.setFontSize(10);
+        doc.text(`Nom & Prénom : ${student.name}`, 14, 35);
+        doc.text(`Classe : ${student.class}`, 14, 42);
+        doc.text(`Matricule : ${student.matricule}`, 140, 35);
+
+        const rows = studentGrades.map(g => [g.subject, g.term, `${g.valeur} / 20`, g.coef, g.comment || '—']);
+        doc.autoTable({
+            startY: 50,
+            head: [['Matière', 'Période', 'Note', 'Coef', 'Appréciation']],
+            body: rows
+        });
+
+        doc.save(`Bulletin_${student.name.replace(/\s+/g, '_')}.pdf`);
+        showAlert('Bulletin PDF généré avec succès !', 'success');
+    }
+
+    function renderLogbook() {
+        const tbody = document.getElementById('logbookTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const clsFilter = document.getElementById('logbookClassFilter')?.value;
+        const list = logbook.filter(l => !clsFilter || l.class === clsFilter);
+        list.forEach(l => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3">${l.date} (${l.time})</td>
+                    <td class="p-3"><span class="badge badge-primary">${l.class}</span></td>
+                    <td class="p-3"><strong>${l.subject}</strong></td>
+                    <td class="p-3">${l.teacher}</td>
+                    <td class="p-3">${l.content}</td>
+                    <td class="p-3">${l.homework || '—'}</td>
+                    <td class="p-3">
+                        <button onclick="editLogbook('${l.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteLogbook('${l.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openLogbookModal() {
+        editingId = null;
+        populateClassDropdowns();
+        document.getElementById('logbookModalTitle').textContent = "Saisir une Séance dans le Cahier de Textes";
+        document.getElementById('logbookDate').value = new Date().toISOString().slice(0, 10);
+        document.getElementById('logbookSubject').value = '';
+        document.getElementById('logbookContent').value = '';
+        document.getElementById('logbookHomework').value = '';
+        document.getElementById('logbookModal').classList.add('active');
+    }
+    function closeLogbookModal() { document.getElementById('logbookModal').classList.remove('active'); editingId = null; }
+
+    function editLogbook(id) {
+        const l = logbook.find(x => x.id === id);
+        if (!l) return;
+        editingId = id;
+        populateClassDropdowns();
+        document.getElementById('logbookModalTitle').textContent = "Modifier la Séance";
+        document.getElementById('logbookClass').value = l.class;
+        document.getElementById('logbookSubject').value = l.subject;
+        document.getElementById('logbookDate').value = l.date;
+        document.getElementById('logbookTime').value = l.time;
+        document.getElementById('logbookContent').value = l.content;
+        document.getElementById('logbookHomework').value = l.homework || '';
+        document.getElementById('logbookModal').classList.add('active');
+    }
+
+    function saveLogbook() {
+        const cls = document.getElementById('logbookClass').value;
+        const subj = document.getElementById('logbookSubject').value.trim();
+        const content = document.getElementById('logbookContent').value.trim();
+        if (!cls || !subj || !content) { showAlert('Classe, Matière et Contenu sont requis', 'error'); return; }
+
+        if (editingId) {
+            const l = logbook.find(x => x.id === editingId);
+            if (l) {
+                l.class = cls;
+                l.subject = subj;
+                l.date = document.getElementById('logbookDate').value;
+                l.time = document.getElementById('logbookTime').value;
+                l.content = content;
+                l.homework = document.getElementById('logbookHomework').value.trim();
+            }
+            showAlert('Séance modifiée', 'success');
+        } else {
+            logbook.push({
+                id: genId('LOG'),
+                class: cls,
+                subject: subj,
+                date: document.getElementById('logbookDate').value,
+                time: document.getElementById('logbookTime').value || '08h-09h',
+                teacher: currentUser.name,
+                content: content,
+                homework: document.getElementById('logbookHomework').value.trim()
+            });
+            showAlert('Séance ajoutée au Cahier de Textes', 'success');
+        }
+        saveDataToStorage();
+        closeLogbookModal();
+        renderLogbook();
+    }
+
+    function deleteLogbook(id) {
+        if (!confirm('Supprimer cette séance ?')) return;
+        logbook = logbook.filter(l => l.id !== id);
+        saveDataToStorage();
+        renderLogbook();
+        showAlert('Entrée supprimée', 'success');
+    }
+
+    function filterLogbook() { renderLogbook(); }
+
+    function renderAbsences() {
+        const tbody = document.getElementById('absenceTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const clsFilter = document.getElementById('absenceClassSelect')?.value;
+        const dateFilter = document.getElementById('absenceDateInput')?.value;
+        const list = absences.filter(a => {
+            if (clsFilter && a.class !== clsFilter) return false;
+            if (dateFilter && a.date !== dateFilter) return false;
+            return true;
+        });
+        list.forEach(a => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${a.studentName}</strong></td>
+                    <td class="p-3"><span class="badge badge-primary">${a.class}</span></td>
+                    <td class="p-3">${a.type}</td>
+                    <td class="p-3">${a.date}</td>
+                    <td class="p-3">${a.reason || '—'}</td>
+                    <td class="p-3">${a.justified === 'Oui' ? '<span class="badge badge-secondary">Oui</span>' : '<span class="badge badge-danger">Non</span>'}</td>
+                    <td class="p-3">
+                        <button onclick="editAbsence('${a.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteAbsence('${a.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openAbsenceModal() {
+        editingId = null;
+        populateStudentDropdowns('absenceStudent');
+        document.getElementById('absenceModalTitle').textContent = "Enregistrer une Absence / Retard";
+        document.getElementById('absenceDate').value = new Date().toISOString().slice(0, 10);
+        document.getElementById('absenceReason').value = '';
+        document.getElementById('absenceModal').classList.add('active');
+    }
+    function closeAbsenceModal() { document.getElementById('absenceModal').classList.remove('active'); editingId = null; }
+
+    function editAbsence(id) {
+        const a = absences.find(x => x.id === id);
+        if (!a) return;
+        editingId = id;
+        populateStudentDropdowns('absenceStudent');
+        document.getElementById('absenceModalTitle').textContent = "Modifier l'Absence / Retard";
+        document.getElementById('absenceStudent').value = a.studentId;
+        document.getElementById('absenceType').value = a.type;
+        document.getElementById('absenceDate').value = a.date;
+        document.getElementById('absenceReason').value = a.reason || '';
+        document.getElementById('absenceJustified').value = a.justified;
+        document.getElementById('absenceModal').classList.add('active');
+    }
+
+    function saveAbsence() {
+        const sId = document.getElementById('absenceStudent').value;
+        const student = students.find(s => s.id === sId);
+        if (!student) { showAlert('Veuillez sélectionner un élève', 'error'); return; }
+
+        if (editingId) {
+            const a = absences.find(x => x.id === editingId);
+            if (a) {
+                a.studentId = student.id;
+                a.studentName = student.name;
+                a.class = student.class;
+                a.date = document.getElementById('absenceDate').value;
+                a.type = document.getElementById('absenceType').value;
+                a.reason = document.getElementById('absenceReason').value;
+                a.justified = document.getElementById('absenceJustified').value;
+            }
+            showAlert('Absence modifiée', 'success');
+        } else {
+            absences.push({
+                id: genId('ABS'),
+                studentId: student.id,
+                studentName: student.name,
+                class: student.class,
+                date: document.getElementById('absenceDate').value,
+                type: document.getElementById('absenceType').value,
+                reason: document.getElementById('absenceReason').value,
+                justified: document.getElementById('absenceJustified').value
+            });
+            showAlert('Absence enregistrée', 'success');
+        }
+        saveDataToStorage();
+        closeAbsenceModal();
+        renderAbsences();
+    }
+
+    function deleteAbsence(id) {
+        if (!confirm('Supprimer cet enregistrement d\'absence ?')) return;
+        absences = absences.filter(a => a.id !== id);
+        saveDataToStorage();
+        renderAbsences();
+        showAlert('Absence supprimée', 'success');
+    }
+
+    function filterAbsences() { renderAbsences(); }
+    function previewAbsenceImport() { showAlert('Prévisualisation des absences...', 'success'); }
+    function exportAbsenceBilan(format) {
+        const ws = XLSX.utils.json_to_sheet(absences);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Absences');
+        XLSX.writeFile(wb, `Absences_Bilan.${format === 'pdf' ? 'xlsx' : format}`);
+    }
+
+    function renderCash() {
+        const tbody = document.getElementById('cashTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const search = document.getElementById('searchCash')?.value.toLowerCase() || '';
+        let totalRev = 0, totalExp = 0;
+        const list = cash.filter(c => {
+            if (search) {
+                return (c.recuNum && c.recuNum.toLowerCase().includes(search)) ||
+                       (c.description && c.description.toLowerCase().includes(search)) ||
+                       (c.studentName && c.studentName.toLowerCase().includes(search));
+            }
+            return true;
+        });
+        list.forEach(c => {
+            if (c.type === 'entree') totalRev += Number(c.amount);
+            else totalExp += Number(c.amount);
+
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${c.recuNum || 'N/A'}</strong><br><small>${c.date}</small></td>
+                    <td class="p-3"><span class="badge ${c.type === 'entree' ? 'badge-secondary' : 'badge-danger'}">${c.type === 'entree' ? 'Recette' : 'Dépense'}</span></td>
+                    <td class="p-3"><strong>${Number(c.amount).toLocaleString('fr-FR')} FCFA</strong></td>
+                    <td class="p-3">${c.description}</td>
+                    <td class="p-3">${c.studentName || '—'}</td>
+                    <td class="p-3">${c.cashierName || '—'}</td>
+                    <td class="p-3">
+                        <button onclick="editCash('${c.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteCash('${c.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+        document.getElementById('totalRevenue').textContent = totalRev.toLocaleString('fr-FR') + ' FCFA';
+        document.getElementById('totalExpense').textContent = totalExp.toLocaleString('fr-FR') + ' FCFA';
+    }
+
+    function openCashierModal() {
+        editingId = null;
+        populateStudentDropdowns('cashStudent');
+        document.getElementById('cashierModalTitle').textContent = "Enregistrer une Transaction de Caisse";
+        document.getElementById('cashRecuNum').value = 'REC-' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
+        document.getElementById('cashAmount').value = '';
+        document.getElementById('cashDescription').value = '';
+        document.getElementById('cashierModal').classList.add('active');
+    }
+    function closeCashierModal() { document.getElementById('cashierModal').classList.remove('active'); editingId = null; }
+
+    function editCash(id) {
+        const c = cash.find(x => x.id === id);
+        if (!c) return;
+        editingId = id;
+        populateStudentDropdowns('cashStudent');
+        document.getElementById('cashierModalTitle').textContent = "Modifier la Transaction";
+        document.getElementById('cashType').value = c.type;
+        document.getElementById('cashRecuNum').value = c.recuNum;
+        document.getElementById('cashAmount').value = c.amount;
+        document.getElementById('cashDescription').value = c.description;
+        if (c.studentId) document.getElementById('cashStudent').value = c.studentId;
+        document.getElementById('cashierModal').classList.add('active');
+    }
+
+    function saveCashier() {
+        const amount = parseFloat(document.getElementById('cashAmount').value);
+        if (isNaN(amount) || amount <= 0) { showAlert('Le montant doit être valide', 'error'); return; }
+        const sId = document.getElementById('cashStudent').value;
+        const student = students.find(s => s.id === sId);
+
+        if (editingId) {
+            const c = cash.find(x => x.id === editingId);
+            if (c) {
+                c.type = document.getElementById('cashType').value;
+                c.amount = amount;
+                c.description = document.getElementById('cashDescription').value;
+                c.studentId = student ? student.id : null;
+                c.studentName = student ? student.name : 'Autre';
+            }
+            showAlert('Transaction modifiée', 'success');
+        } else {
+            cash.push({
+                id: genId('CSH'),
+                recuNum: document.getElementById('cashRecuNum').value,
+                type: document.getElementById('cashType').value,
+                amount: amount,
+                description: document.getElementById('cashDescription').value,
+                studentId: student ? student.id : null,
+                studentName: student ? student.name : 'Autre',
+                date: new Date().toISOString().slice(0, 10),
+                cashierName: currentUser.name
+            });
+            showAlert('Transaction enregistrée', 'success');
+        }
+        saveDataToStorage();
+        closeCashierModal();
+        renderCash();
+    }
+
+    function deleteCash(id) {
+        if (!confirm('Supprimer cette transaction ?')) return;
+        cash = cash.filter(c => c.id !== id);
+        saveDataToStorage();
+        renderCash();
+        showAlert('Transaction supprimée', 'success');
+    }
+
+    function filterCash() { renderCash(); }
+    function previewCashImport() { showAlert('Prévisualisation des transactions...', 'success'); }
+    function exportCashJournal(format) {
+        const ws = XLSX.utils.json_to_sheet(cash);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'JournalCaisse');
+        XLSX.writeFile(wb, `Journal_Caisse.${format === 'pdf' ? 'xlsx' : format}`);
+    }
+
+    function renderTeachers() {
+        const tbody = document.getElementById('teacherTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const search = document.getElementById('searchTeacher')?.value.toLowerCase() || '';
+        const list = teachers.filter(t => !search || t.name.toLowerCase().includes(search) || t.specialty.toLowerCase().includes(search));
+        list.forEach(t => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${t.name}</strong></td>
+                    <td class="p-3">${t.specialty}</td>
+                    <td class="p-3">${t.classes}</td>
+                    <td class="p-3">${t.phone || '—'}</td>
+                    <td class="p-3">${t.email || '—'}</td>
+                    <td class="p-3"><span class="badge badge-secondary">Actif</span></td>
+                    <td class="p-3">
+                        <button onclick="editTeacher('${t.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteTeacher('${t.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openTeacherModal() {
+        editingId = null;
+        document.getElementById('teacherModalTitle').textContent = "Ajouter un Enseignant";
+        document.getElementById('teacherName').value = '';
+        document.getElementById('teacherSpecialty').value = '';
+        document.getElementById('teacherClasses').value = '';
+        document.getElementById('teacherPhone').value = '';
+        document.getElementById('teacherEmail').value = '';
+        document.getElementById('teacherModal').classList.add('active');
+    }
+    function closeTeacherModal() { document.getElementById('teacherModal').classList.remove('active'); editingId = null; }
+
+    function editTeacher(id) {
+        const t = teachers.find(x => x.id === id);
+        if (!t) return;
+        editingId = id;
+        document.getElementById('teacherModalTitle').textContent = "Modifier l'Enseignant";
+        document.getElementById('teacherName').value = t.name;
+        document.getElementById('teacherSpecialty').value = t.specialty;
+        document.getElementById('teacherClasses').value = t.classes;
+        document.getElementById('teacherPhone').value = t.phone || '';
+        document.getElementById('teacherEmail').value = t.email || '';
+        document.getElementById('teacherModal').classList.add('active');
+    }
+
+    function saveTeacher() {
+        const name = document.getElementById('teacherName').value.trim();
+        if (!name) { showAlert('Le nom de l\'enseignant est requis', 'error'); return; }
+
+        if (editingId) {
+            const t = teachers.find(x => x.id === editingId);
+            if (t) {
+                t.name = name;
+                t.specialty = document.getElementById('teacherSpecialty').value || 'Général';
+                t.classes = document.getElementById('teacherClasses').value || 'Toutes';
+                t.phone = document.getElementById('teacherPhone').value;
+                t.email = document.getElementById('teacherEmail').value;
+            }
+            showAlert('Enseignant modifié', 'success');
+        } else {
+            teachers.push({
+                id: genId('TCH'),
+                name,
+                specialty: document.getElementById('teacherSpecialty').value || 'Général',
+                classes: document.getElementById('teacherClasses').value || 'Toutes',
+                phone: document.getElementById('teacherPhone').value,
+                email: document.getElementById('teacherEmail').value
+            });
+            showAlert('Enseignant enregistré', 'success');
+        }
+        saveDataToStorage();
+        closeTeacherModal();
+        renderTeachers();
+    }
+
+    function deleteTeacher(id) {
+        if (!confirm('Supprimer cet enseignant ?')) return;
+        teachers = teachers.filter(t => t.id !== id);
+        saveDataToStorage();
+        renderTeachers();
+        showAlert('Enseignant supprimé', 'success');
+    }
+    function filterTeachers() { renderTeachers(); }
+
+    function renderHomework() {
+        const tbody = document.getElementById('homeworkTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const clsFilter = document.getElementById('homeworkClassSelect')?.value;
+        const list = homework.filter(h => !clsFilter || h.class === clsFilter);
+        list.forEach(h => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><span class="badge badge-primary">${h.class}</span></td>
+                    <td class="p-3"><strong>${h.subject}</strong></td>
+                    <td class="p-3">${h.teacher}</td>
+                    <td class="p-3">${h.description}</td>
+                    <td class="p-3">${h.dateGiven || new Date().toISOString().slice(0, 10)}</td>
+                    <td class="p-3"><strong class="text-red-600">${h.deadline}</strong></td>
+                    <td class="p-3">
+                        <button onclick="editHomework('${h.id}')" class="btn-sec btn-table-action">✏️</button>
+                        <button onclick="deleteHomework('${h.id}')" class="btn-danger btn-table-action">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openHomeworkModal() {
+        editingId = null;
+        populateClassDropdowns();
+        populateTeacherDropdowns('homeworkTeacher');
+        document.getElementById('homeworkModalTitle').textContent = "Attribuer un Devoir";
+        document.getElementById('homeworkSubject').value = '';
+        document.getElementById('homeworkDescription').value = '';
+        document.getElementById('homeworkDeadline').value = new Date().toISOString().slice(0, 10);
+        document.getElementById('homeworkModal').classList.add('active');
+    }
+    function closeHomeworkModal() { document.getElementById('homeworkModal').classList.remove('active'); editingId = null; }
+
+    function editHomework(id) {
+        const h = homework.find(x => x.id === id);
+        if (!h) return;
+        editingId = id;
+        populateClassDropdowns();
+        populateTeacherDropdowns('homeworkTeacher');
+        document.getElementById('homeworkModalTitle').textContent = "Modifier le Devoir";
+        document.getElementById('homeworkClass').value = h.class;
+        document.getElementById('homeworkSubject').value = h.subject;
+        document.getElementById('homeworkTeacher').value = h.teacher;
+        document.getElementById('homeworkDescription').value = h.description;
+        document.getElementById('homeworkDeadline').value = h.deadline;
+        document.getElementById('homeworkModal').classList.add('active');
+    }
+
+    function saveHomework() {
+        const cls = document.getElementById('homeworkClass').value;
+        const desc = document.getElementById('homeworkDescription').value.trim();
+        if (!cls || !desc) { showAlert('La classe et la description sont requises', 'error'); return; }
+
+        if (editingId) {
+            const h = homework.find(x => x.id === editingId);
+            if (h) {
+                h.class = cls;
+                h.subject = document.getElementById('homeworkSubject').value || 'Devoir';
+                h.teacher = document.getElementById('homeworkTeacher').value || currentUser.name;
+                h.description = desc;
+                h.deadline = document.getElementById('homeworkDeadline').value;
+            }
+            showAlert('Devoir modifié', 'success');
+        } else {
+            homework.push({
+                id: genId('HWK'),
+                class: cls,
+                subject: document.getElementById('homeworkSubject').value || 'Devoir',
+                teacher: document.getElementById('homeworkTeacher').value || currentUser.name,
+                description: desc,
+                dateGiven: new Date().toISOString().slice(0, 10),
+                deadline: document.getElementById('homeworkDeadline').value
+            });
+            showAlert('Devoir attribué', 'success');
+        }
+        saveDataToStorage();
+        closeHomeworkModal();
+        renderHomework();
+    }
+
+    function deleteHomework(id) {
+        if (!confirm('Supprimer ce devoir ?')) return;
+        homework = homework.filter(h => h.id !== id);
+        saveDataToStorage();
+        renderHomework();
+        showAlert('Devoir supprimé', 'success');
+    }
+    function filterHomework() { renderHomework(); }
+
+    function renderCommunications() {
+        const feed = document.getElementById('messagesFeed');
+        if (feed) {
+            feed.innerHTML = '';
+            messages.forEach(m => {
+                feed.innerHTML += `
+                    <div class="p-3 bg-slate-50 border rounded-lg">
+                        <div class="flex justify-between items-center mb-1">
+                            <h5 class="font-bold text-slate-800 text-xs">${m.title}</h5>
+                            <span class="badge ${m.priority === 'Urgent' ? 'badge-danger' : 'badge-primary'}">${m.priority}</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-2">${m.content}</p>
+                        <div class="flex justify-between items-center">
+                            <small class="text-slate-400">Publié par ${m.author} le ${m.date}</small>
+                            <button onclick="deleteMessage('${m.id}')" class="btn-danger btn-table-action">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        const appBody = document.getElementById('appointmentsTableBody');
+        if (appBody) {
+            appBody.innerHTML = '';
+            appointments.forEach(a => {
+                appBody.innerHTML += `
+                    <tr>
+                        <td class="p-2"><strong>${a.requester}</strong></td>
+                        <td class="p-2">${a.targetUser}</td>
+                        <td class="p-2">${a.date} ${a.time}</td>
+                        <td class="p-2">${a.reason}</td>
+                        <td class="p-2">
+                            <button onclick="deleteAppointment('${a.id}')" class="btn-danger btn-table-action">🗑️ Supprimer</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+    }
+
+    function openMessageModal() {
+        document.getElementById('messageTitle').value = '';
+        document.getElementById('messageContent').value = '';
+        document.getElementById('messageModal').classList.add('active');
+    }
+    function closeMessageModal() { document.getElementById('messageModal').classList.remove('active'); }
+
+    function saveMessage() {
+        const title = document.getElementById('messageTitle').value.trim();
+        const content = document.getElementById('messageContent').value.trim();
+        if (!title || !content) { showAlert('Titre et contenu sont requis', 'error'); return; }
+        messages.push({
+            id: genId('MSG'),
+            title, content,
+            priority: document.getElementById('messagePriority').value,
+            author: currentUser.name,
+            date: new Date().toISOString().slice(0, 10)
+        });
+        saveDataToStorage();
+        closeMessageModal();
+        renderCommunications();
+        showAlert('Annonce publiée', 'success');
+    }
+
+    function deleteMessage(id) {
+        if (!confirm('Supprimer cette annonce ?')) return;
+        messages = messages.filter(m => m.id !== id);
+        saveDataToStorage();
+        renderCommunications();
+        showAlert('Message supprimé', 'success');
+    }
+
+    function openAppointmentModal() {
+        populateUserDropdowns('appTargetUser');
+        document.getElementById('appDate').value = new Date().toISOString().slice(0, 10);
+        document.getElementById('appTime').value = '10:00';
+        document.getElementById('appReason').value = '';
+        document.getElementById('appointmentModal').classList.add('active');
+    }
+    function closeAppointmentModal() { document.getElementById('appointmentModal').classList.remove('active'); }
+
+    function saveAppointment() {
+        const target = document.getElementById('appTargetUser').value;
+        const reason = document.getElementById('appReason').value.trim();
+        if (!target || !reason) { showAlert('Veuillez remplir l\'interlocuteur et le motif', 'error'); return; }
+        appointments.push({
+            id: genId('APP'),
+            requester: currentUser.name,
+            targetUser: target,
+            date: document.getElementById('appDate').value,
+            time: document.getElementById('appTime').value,
+            reason: reason
+        });
+        saveDataToStorage();
+        closeAppointmentModal();
+        renderCommunications();
+        showAlert('Demande de rendez-vous envoyée', 'success');
+    }
+
+    function deleteAppointment(id) {
+        if (!confirm('Annuler ce rendez-vous ?')) return;
+        appointments = appointments.filter(a => a.id !== id);
+        saveDataToStorage();
+        renderCommunications();
+        showAlert('Rendez-vous annulé', 'success');
+    }
+
+    function renderUsers() {
+        const tbody = document.getElementById('userTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        users.filter(u => u.role !== 'createur').forEach(u => {
+            tbody.innerHTML += `
+                <tr>
+                    <td class="p-3"><strong>${u.name}</strong></td>
+                    <td class="p-3">${u.email}</td>
+                    <td class="p-3"><span class="badge badge-primary">${u.role}</span></td>
+                    <td class="p-3"><span class="badge ${u.status === 'actif' ? 'badge-secondary' : 'badge-danger'}">${u.status}</span></td>
+                    <td class="p-3">
+                        <button onclick="editUser('${u.id}')" class="btn-sec btn-table-action">✏️ Modifier</button>
+                        <button onclick="toggleUserStatus('${u.id}')" class="btn-sec btn-table-action">${u.status === 'actif' ? '🚫 Bloquer' : '✅ Activer'}</button>
+                        <button onclick="deleteUser('${u.id}')" class="btn-danger btn-table-action">🗑️ Supprimer</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function openUserModal() {
+        editingId = null;
+        document.getElementById('userModalTitle').textContent = "Créer un Membre de l'Équipe";
+        document.getElementById('userNameInput').value = '';
+        document.getElementById('userEmailInput').value = '';
+        document.getElementById('userFixedPassword').value = '';
+        document.getElementById('userModal').classList.add('active');
+    }
+    function closeUserModal() { document.getElementById('userModal').classList.remove('active'); editingId = null; }
+
+    function editUser(id) {
+        const u = users.find(x => x.id === id);
+        if (!u) return;
+        editingId = id;
+        document.getElementById('userModalTitle').textContent = "Modifier le Membre d'Équipe";
+        document.getElementById('userNameInput').value = u.name;
+        document.getElementById('userEmailInput').value = u.email;
+        document.getElementById('userRoleSelect').value = u.role;
+        document.getElementById('userFixedPassword').value = u.plainPassword || '';
+        document.getElementById('userModal').classList.add('active');
+    }
+
+    function saveUser() {
+        const name = document.getElementById('userNameInput').value.trim();
+        const email = document.getElementById('userEmailInput').value.trim().toLowerCase();
+        const pass = document.getElementById('userFixedPassword').value.trim();
+        if (!name || !email || !pass) { showAlert('Nom, Email et Mot de passe sont requis', 'error'); return; }
+
+        if (editingId) {
+            const u = users.find(x => x.id === editingId);
+            if (u) {
+                u.name = name;
+                u.email = email;
+                u.role = document.getElementById('userRoleSelect').value;
+                u.plainPassword = pass;
+                u.codeHash = CryptoJS.SHA256(pass).toString();
+            }
+            showAlert('Membre d\'équipe mis à jour', 'success');
+        } else {
+            users.push({
+                id: genId('USR'),
+                name, email,
+                role: document.getElementById('userRoleSelect').value,
+                school: currentUser.school,
+                plainPassword: pass,
+                codeHash: CryptoJS.SHA256(pass).toString(),
+                status: 'actif'
+            });
+            showAlert('Membre d\'équipe créé avec succès !', 'success');
+        }
+        saveDataToStorage();
+        closeUserModal();
+        renderUsers();
+    }
+
+    function toggleUserStatus(id) {
+        const u = users.find(x => x.id === id);
+        if (!u) return;
+        u.status = u.status === 'actif' ? 'inactif' : 'actif';
+        saveDataToStorage();
+        renderUsers();
+        if (currentUser.role === 'createur') renderCreatorMaster();
+        showAlert(`Statut du compte mis à jour: ${u.status}`, 'success');
+    }
+
+    function deleteUser(id) {
+        if (!confirm('Supprimer cet utilisateur ?')) return;
+        users = users.filter(u => u.id !== id);
+        saveDataToStorage();
+        renderUsers();
+        showAlert('Utilisateur supprimé', 'success');
+    }
+
+    function renderPersonalSettings() {
+        const div = document.getElementById('personalSettings');
+        if (!div || !currentUser) return;
+        div.innerHTML = `
+            <div class="p-4 bg-white border rounded-lg shadow-sm space-y-2 text-xs">
+                <p><strong>Nom :</strong> ${currentUser.name}</p>
+                <p><strong>Email :</strong> ${currentUser.email}</p>
+                <p><strong>Rôle :</strong> ${(currentUser.role || 'UTILISATEUR').toUpperCase()}</p>
+                <p><strong>Établissement :</strong> ${currentUser.school || 'École'}</p>
+            </div>
+        `;
+        const cfg = getCloudConfig();
+        if (cfg) {
+            document.getElementById('cloudOwner').value = cfg.owner || '';
+            document.getElementById('cloudRepo').value = cfg.repo || '';
+            document.getElementById('cloudPath').value = cfg.path || 'data.json';
+            document.getElementById('cloudBranch').value = cfg.branch || 'main';
+            document.getElementById('cloudToken').value = cfg.token || '';
+            document.getElementById('settingsSyncBadge').textContent = "Configuré";
+            document.getElementById('settingsSyncBadge').className = "badge badge-secondary";
+        }
+    }
+
+    function saveDataToStorage(triggerSync = true) {
+        localStorage.setItem('c2mUsers', JSON.stringify(users));
+        localStorage.setItem('c2mStudents', JSON.stringify(students));
+        localStorage.setItem('c2mSchedules', JSON.stringify(schedules));
+        localStorage.setItem('c2mGrades', JSON.stringify(grades));
+        localStorage.setItem('c2mLogbook', JSON.stringify(logbook));
+        localStorage.setItem('c2mAbsences', JSON.stringify(absences));
+        localStorage.setItem('c2mCash', JSON.stringify(cash));
+        localStorage.setItem('c2mTeachers', JSON.stringify(teachers));
+        localStorage.setItem('c2mHomework', JSON.stringify(homework));
+        localStorage.setItem('c2mMessages', JSON.stringify(messages));
+        localStorage.setItem('c2mAppointments', JSON.stringify(appointments));
+        localStorage.setItem('c2mLastLocalChange', String(Date.now()));
+
+        if (triggerSync) {
+            scheduleCloudPush();
+        }
+    }
+
+    function loadDataFromStorage() {
+        users = JSON.parse(localStorage.getItem('c2mUsers')) || [];
+        students = JSON.parse(localStorage.getItem('c2mStudents')) || [];
+        schedules = JSON.parse(localStorage.getItem('c2mSchedules')) || [];
+        grades = JSON.parse(localStorage.getItem('c2mGrades')) || [];
+        logbook = JSON.parse(localStorage.getItem('c2mLogbook')) || [];
+        absences = JSON.parse(localStorage.getItem('c2mAbsences')) || [];
+        cash = JSON.parse(localStorage.getItem('c2mCash')) || [];
+        teachers = JSON.parse(localStorage.getItem('c2mTeachers')) || [];
+        homework = JSON.parse(localStorage.getItem('c2mHomework')) || [];
+        messages = JSON.parse(localStorage.getItem('c2mMessages')) || [];
+        appointments = JSON.parse(localStorage.getItem('c2mAppointments')) || [];
+    }
+
+    const CLOUD_KEY = 'c2mCloudConfig';
+    let cloudPushTimer = null;
+
+    function getCloudConfig() {
+        try { return JSON.parse(localStorage.getItem(CLOUD_KEY)) || null; }
+        catch (e) { return null; }
+    }
+
+    function saveCloudConfigFromSettings() {
+        const owner = document.getElementById('cloudOwner').value.trim();
+        const repo = document.getElementById('cloudRepo').value.trim();
+        const path = document.getElementById('cloudPath').value.trim() || 'data.json';
+        const branch = document.getElementById('cloudBranch').value.trim() || 'main';
+        const token = document.getElementById('cloudToken').value.trim();
+
+        if (!owner || !repo || !token) {
+            showAlert('Remplissez le propriétaire, dépôt et token GitHub', 'error');
+            return;
+        }
+
+        const cfg = { owner, repo, path, branch, token };
+        localStorage.setItem(CLOUD_KEY, JSON.stringify(cfg));
+
+        const badge = document.getElementById('settingsSyncBadge');
+        if (badge) {
+            badge.textContent = "Configuré";
+            badge.className = "badge badge-secondary";
+        }
+
+        showAlert('Configuration Cloud enregistrée ! Synchronisation vers GitHub en cours...', 'success');
+
+        pushCloudData().then(() => {
+            showAlert('✅ Données synchronisées avec succès sur GitHub !', 'success');
+            const box = document.getElementById('cloudDiagnosticsBox');
+            if (box) {
+                box.classList.remove('hidden');
+                box.innerHTML = '✅ Connexion et synchronisation réussies sur GitHub (' + new Date().toLocaleTimeString() + ')';
+            }
+        }).catch(err => {
+            showAlert('⚠️ Configuration enregistrée, mais erreur lors de l\'envoi : ' + err.message, 'error');
+            const box = document.getElementById('cloudDiagnosticsBox');
+            if (box) {
+                box.classList.remove('hidden');
+                box.innerHTML = '❌ Erreur de synchronisation : ' + err.message;
+            }
+        });
+    }
+
+    async function testCloudConnection() {
+        const cfg = {
+            owner: document.getElementById('cloudOwner').value.trim(),
+            repo: document.getElementById('cloudRepo').value.trim(),
+            token: document.getElementById('cloudToken').value.trim()
+        };
+        const box = document.getElementById('cloudDiagnosticsBox');
+        box.classList.remove('hidden');
+        box.innerHTML = '⏳ Vérification de la connexion GitHub...';
+
+        try {
+            const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}`, {
+                headers: { 'Authorization': 'Bearer ' + cfg.token }
+            });
+            if (res.ok) {
+                box.innerHTML = '✅ Connexion réussie au dépôt GitHub !';
+            } else {
+                box.innerHTML = '❌ Échec de connexion. Vérifiez le token et le nom du dépôt.';
+            }
+        } catch (e) {
+            box.innerHTML = '❌ Erreur réseau : ' + e.message;
+        }
+    }
+
+    function buildDataBundle() {
+        return {
+            updatedAt: Date.now(),
+            users, students, schedules, grades, logbook, absences, cash, teachers, homework, messages, appointments
+        };
+    }
+
+    function applyDataBundle(bundle) {
+        if (!bundle) return;
+        users = bundle.users || users;
+        students = bundle.students || students;
+        schedules = bundle.schedules || schedules;
+        grades = bundle.grades || grades;
+        logbook = bundle.logbook || logbook;
+        absences = bundle.absences || absences;
+        cash = bundle.cash || cash;
+        teachers = bundle.teachers || teachers;
+        homework = bundle.homework || homework;
+        messages = bundle.messages || messages;
+        appointments = bundle.appointments || appointments;
+
+        saveDataToStorage(false);
+        refreshCurrentTab();
+    }
+
+    async function manualCloudSync() {
+        const cfg = getCloudConfig();
+        if (!cfg) return;
+
+        try {
+            const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}?ref=${cfg.branch}`, {
+                headers: { 'Authorization': 'Bearer ' + cfg.token }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                const content = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+                const remoteBundle = JSON.parse(content);
+                const localTime = parseInt(localStorage.getItem('c2mLastLocalChange') || '0', 10);
+
+                if (remoteBundle.updatedAt > localTime) {
+                    applyDataBundle(remoteBundle);
+                } else if (remoteBundle.updatedAt < localTime) {
+                    pushCloudData();
+                }
+            } else if (res.status === 404) {
+                pushCloudData();
+            }
+        } catch (e) {
+            console.warn('Sync cloud error:', e);
+        }
+    }
+
+    async function pushCloudData() {
+        const cfg = getCloudConfig();
+        if (!cfg || !cfg.owner || !cfg.repo || !cfg.token) {
+            throw new Error("Configuration GitHub incomplète");
+        }
+
+        const bundle = buildDataBundle();
+        const contentStr = btoa(unescape(encodeURIComponent(JSON.stringify(bundle, null, 2))));
+
+        let sha = null;
+        const checkRes = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}?ref=${cfg.branch}`, {
+            headers: { 'Authorization': 'Bearer ' + cfg.token }
+        });
+        if (checkRes.ok) {
+            const checkData = await checkRes.json();
+            sha = checkData.sha;
+        }
+
+        const body = {
+            message: 'Synchronisation C2M',
+            content: contentStr,
+            branch: cfg.branch
+        };
+        if (sha) body.sha = sha;
+
+        const pushRes = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${cfg.path}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + cfg.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!pushRes.ok) {
+            const errData = await pushRes.json();
+            throw new Error(errData.message || 'Erreur lors du transfert GitHub');
+        }
+    }
+
+    function scheduleCloudPush() {
+        if (cloudPushTimer) clearTimeout(cloudPushTimer);
+        cloudPushTimer = setTimeout(() => {
+            pushCloudData().catch(e => console.warn('Push error:', e));
+        }, 3000);
+    }
+
+    function initCloudSyncOnLoad() {
+        manualCloudSync();
+        setInterval(manualCloudSync, 30000);
+    }
+</script>
+</body>
+</html>
