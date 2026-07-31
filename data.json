@@ -1,0 +1,96 @@
+{
+  "updatedAt": 1785509274185,
+  "users": [
+    {
+      "id": "USR_creator_master",
+      "name": "Cora Mboup (Créateur Maître)",
+      "email": "coramboup72@gmail.com",
+      "role": "createur",
+      "school": "C2M Holding & Logiciels",
+      "codeHash": "bd1ed0b97d5c875020764882c48d13992c701ab980a1a86d3fcc9e2411d6792d",
+      "status": "actif",
+      "subscriptionStatus": "Payant",
+      "createdAt": "31/07/2026",
+      "expirationDate": "2099-12-31",
+      "plainPass": "CoraMaster2026!"
+    },
+    {
+      "id": "USR_directeur_sane",
+      "name": "Mr. Sane (Directeur C2M Parcelles)",
+      "email": "directeur@c2m.sn",
+      "role": "directeur",
+      "school": "École C2M Parcelles Assainies Unité 7",
+      "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
+      "status": "actif",
+      "subscriptionStatus": "Gratuit",
+      "createdAt": "31/07/2026",
+      "expirationDate": "2028-12-31",
+      "plainPass": "DIR2024"
+    },
+    {
+      "id": "USR_prof_diop",
+      "name": "Professeur Diop",
+      "email": "prof.diop@c2m.sn",
+      "role": "enseignant",
+      "school": "École C2M Parcelles Assainies Unité 7",
+      "codeHash": "dca033aa1a8c4a6d19dc3065c0146dac5b924a277ba2eeb67741f3a7a95d0fc1",
+      "plainPass": "PROF2024",
+      "status": "actif",
+      "createdAt": "31/07/2026"
+    },
+    {
+      "id": "USR_ms8t0wbwaxyo",
+      "name": "Cora Mboup",
+      "school": "c2m soutien scolaire",
+      "email": "cmboup@c2m.sn",
+      "phone": "777462219",
+      "role": "directeur",
+      "plainPassword": "cmboup2017",
+      "codeHash": "c01d213ac33b7c82b6110b3a20f22090a76a92fc25c9377312cbca2229d20cd4",
+      "status": "actif"
+    }
+  ],
+  "students": [
+    {
+      "id": "STU_ms8jx16xxnju",
+      "name": "Ibra Mboup",
+      "class": "CP",
+      "matricule": "MAT79544",
+      "dob": "2026-07-01",
+      "sexe": "M",
+      "parent": "Cora Mboup ",
+      "phone": "707528905",
+      "school": "École C2M Parcelles Assainies Unité 7",
+      "createdAt": "31/07/2026"
+    }
+  ],
+  "schedules": [],
+  "grades": [],
+  "logbook": [],
+  "absences": [],
+  "cash": [],
+  "teachers": [
+    {
+      "id": "TCH_ms8j75h9aoau",
+      "name": "Cora Mboup ",
+      "specialty": "Maths",
+      "classes": "001",
+      "phone": "",
+      "email": "777462219",
+      "school": "École C2M Parcelles Assainies Unité 7"
+    }
+  ],
+  "homework": [],
+  "messages": [
+    {
+      "id": "MSG_ms8j0gqefzr0",
+      "title": "Salut",
+      "content": "C'est monsieur mboup",
+      "priority": "Important",
+      "from": "Mr. Sane (Directeur C2M Parcelles)",
+      "createdAt": "31/07/2026",
+      "school": "École C2M Parcelles Assainies Unité 7"
+    }
+  ],
+  "appointments": []
+}
