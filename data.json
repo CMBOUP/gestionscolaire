@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785516867055,
+  "updatedAt": 1785516927447,
   "users": [
     {
       "id": "USR_creator_master",
@@ -47,6 +47,17 @@
       "role": "directeur",
       "plainPassword": "cmboup2017",
       "codeHash": "c01d213ac33b7c82b6110b3a20f22090a76a92fc25c9377312cbca2229d20cd4",
+      "status": "actif"
+    },
+    {
+      "id": "USR_ms96nip9k0fi",
+      "name": "M.Sene",
+      "school": "Les pédagogues",
+      "email": "peda@c2m.sn",
+      "phone": "785221436",
+      "role": "directeur",
+      "plainPassword": "peda2026",
+      "codeHash": "94f421d074641c47bff4f52c098c0090ed21edc1d9527a95da877b659541c8e9",
       "status": "actif"
     }
   ],
