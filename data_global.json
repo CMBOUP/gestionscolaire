@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785650040162,
-  "school": "Global",
+  "updatedAt": 1785650099768,
+  "school": "Direction Centrale C2M",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -11,17 +11,6 @@
       "cloudPath": "data_global.json",
       "plainPassword": "CoraMaster2026!",
       "codeHash": "bd1ed0b97d5c875020764882c48d13992c701ab980a1a86d3fcc9e2411d6792d",
-      "status": "actif"
-    },
-    {
-      "id": "USR_DIR_DEMO",
-      "name": "M. Sene",
-      "email": "directeur@c2m.sn",
-      "role": "directeur",
-      "school": "École C2M Unité 7",
-      "cloudPath": "data_ecole_unite7.json",
-      "plainPassword": "DIR2024",
-      "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
       "status": "actif"
     },
     {
