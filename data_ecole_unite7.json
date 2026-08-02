@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785653048472,
+  "updatedAt": 1785653069767,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -104,7 +104,17 @@
   "cash": [],
   "teachers": [],
   "homework": [],
-  "messages": [],
+  "messages": [
+    {
+      "id": "MSG_msbfq3gvzr4q",
+      "title": "salutations",
+      "content": "Chers élèves et parents,\n\nNous sommes ravis de vous accueillir dans notre communauté éducative. Chaque jour, nous nous engageons à offrir un environnement d'apprentissage stimulant et enrichissant pour tous. Votre soutien et votre participation sont essentiels pour le succès de nos élèves.\n\nNous vous encourageons à rester impliqués, à poser des questions et à partager vos idées. Ensemble, nous pouvons créer une expérience scolaire positive et mémorable.\n\nMerci de faire partie de notre aventure éducative !\n\nCordialement,  \nL'équipe de gestion de l'école",
+      "school": "École C2M Unité 7",
+      "priority": "Normal",
+      "author": "M. Sene",
+      "date": "2026-08-02"
+    }
+  ],
   "appointments": [],
   "events": []
 }
