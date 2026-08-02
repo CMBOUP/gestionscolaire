@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785652079765,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785652546205,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -83,6 +83,16 @@
       "role": "directeur",
       "plainPassword": "CMBOUP123",
       "codeHash": "a9dcc3b58cf7f795c27c424266665ad03ee022d43271fe599f396485d09ec0ae",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msbf3zokr3hb",
+      "name": "Mor Mboup",
+      "email": "mboup@c2m.sn",
+      "role": "enseignant",
+      "school": "soutien scolaire",
+      "plainPassword": "Mboup321",
+      "codeHash": "2b6ca96619b8d75eaf4a9de1ea34a78f5a150a1a89480c5a3f4f1cbfaf4bed45",
       "status": "actif"
     }
   ],
