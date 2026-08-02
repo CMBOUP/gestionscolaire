@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785651586154,
+  "updatedAt": 1785651672785,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -72,6 +72,17 @@
       "school": "École C2M Unité 7",
       "plainPassword": "Comptable2026!",
       "codeHash": "06f65362d19fe1de58133b2937c9ac0ea2edb6b7cbdd9c330c36c8d8436a68f5",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msbewefjllin",
+      "name": "M.Mboup",
+      "school": "soutien scolaire",
+      "email": "soutien@c2m.sn",
+      "cloudPath": "data_ecole_2520.json",
+      "role": "directeur",
+      "plainPassword": "CMBOUP123",
+      "codeHash": "a9dcc3b58cf7f795c27c424266665ad03ee022d43271fe599f396485d09ec0ae",
       "status": "actif"
     }
   ],
