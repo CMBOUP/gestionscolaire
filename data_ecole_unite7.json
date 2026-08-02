@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785653318474,
+  "updatedAt": 1785653369768,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -104,7 +104,17 @@
   "cash": [],
   "teachers": [],
   "homework": [],
-  "messages": [],
+  "messages": [
+    {
+      "id": "MSG_msbfwip25y2w",
+      "title": "salut",
+      "content": "salut",
+      "school": "École C2M Unité 7",
+      "priority": "Normal",
+      "author": "M. Sene",
+      "date": "2026-08-02"
+    }
+  ],
   "appointments": [],
   "events": []
 }
