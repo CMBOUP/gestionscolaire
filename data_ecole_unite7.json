@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785674938089,
+  "updatedAt": 1785676610969,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -128,5 +128,16 @@
     }
   ],
   "appointments": [],
-  "events": []
+  "events": [
+    {
+      "id": "EVT_msbt1cbx7voh",
+      "school": "soutien scolaire",
+      "title": "conseil d'école",
+      "date": "2026-08-04",
+      "time": "15:05",
+      "type": "Réunion",
+      "audience": "les enseignants du primaire",
+      "details": "Réunion à classe 001"
+    }
+  ]
 }
