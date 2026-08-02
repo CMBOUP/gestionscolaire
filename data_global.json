@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785675170361,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785675442156,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -128,5 +128,16 @@
     }
   ],
   "appointments": [],
-  "events": []
+  "events": [
+    {
+      "id": "EVT_msbt1cbx7voh",
+      "school": "soutien scolaire",
+      "title": "conseil d'école",
+      "date": "2026-08-04",
+      "time": "15:05",
+      "type": "Réunion",
+      "audience": "les enseignants du primaire",
+      "details": "Réunion à classe 001"
+    }
+  ]
 }
