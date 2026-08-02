@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785650830611,
+  "updatedAt": 1785650937718,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -72,6 +72,17 @@
       "role": "directeur",
       "plainPassword": "DIR2024",
       "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msbegn8sacsb",
+      "name": "M. Mboup",
+      "school": "M. Mboup",
+      "email": "soutien@c2m.sn",
+      "cloudPath": "data_ecole_3768.json",
+      "role": "directeur",
+      "plainPassword": "CMBOUP123",
+      "codeHash": "a9dcc3b58cf7f795c27c424266665ad03ee022d43271fe599f396485d09ec0ae",
       "status": "actif"
     }
   ],
