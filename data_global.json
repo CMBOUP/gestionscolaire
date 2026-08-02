@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785648931817,
+  "updatedAt": 1785649070625,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -20,8 +20,8 @@
       "role": "directeur",
       "school": "École C2M Unité 7",
       "cloudPath": "data_ecole_unite7.json",
-      "plainPassword": "Directeur2026!",
-      "codeHash": "58eb6f368a2800bcd0dc612526195a7f801fe19ec416505166c1bb3839312371",
+      "plainPassword": "DIR2024",
+      "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
       "status": "actif"
     },
     {
