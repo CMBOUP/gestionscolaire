@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785653408504,
+  "updatedAt": 1785653444996,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -99,7 +99,19 @@
   "students": [],
   "schedules": [],
   "grades": [],
-  "logbook": [],
+  "logbook": [
+    {
+      "id": "LOG_msbfydvp7d3r",
+      "class": "CE1",
+      "school": "École C2M Unité 7",
+      "subject": "histogéo",
+      "date": "2026-08-02",
+      "time": "8h-9h",
+      "teacher": "M. Sene",
+      "content": "les nombres premiers",
+      "homework": ""
+    }
+  ],
   "absences": [],
   "cash": [],
   "teachers": [],
