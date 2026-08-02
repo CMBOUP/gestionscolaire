@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785693135991,
+  "updatedAt": 1785693855173,
   "school": "Global",
   "users": [
     {
@@ -121,6 +121,15 @@
       "id": "MSG_msbfwip25y2w",
       "title": "salut",
       "content": "salut",
+      "school": "École C2M Unité 7",
+      "priority": "Normal",
+      "author": "M. Sene",
+      "date": "2026-08-02"
+    },
+    {
+      "id": "MSG_msc3wyxiddwy",
+      "title": "Salutations",
+      "content": "Salut toute l'équipe éducative. Bonna année scolaire.",
       "school": "École C2M Unité 7",
       "priority": "Normal",
       "author": "M. Sene",
