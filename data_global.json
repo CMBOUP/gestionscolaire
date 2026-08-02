@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785652859771,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785653520232,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -99,12 +99,34 @@
   "students": [],
   "schedules": [],
   "grades": [],
-  "logbook": [],
+  "logbook": [
+    {
+      "id": "LOG_msbfydvp7d3r",
+      "class": "CE1",
+      "school": "École C2M Unité 7",
+      "subject": "histogéo",
+      "date": "2026-08-02",
+      "time": "8h-9h",
+      "teacher": "M. Sene",
+      "content": "les nombres premiers",
+      "homework": ""
+    }
+  ],
   "absences": [],
   "cash": [],
   "teachers": [],
   "homework": [],
-  "messages": [],
+  "messages": [
+    {
+      "id": "MSG_msbfwip25y2w",
+      "title": "salut",
+      "content": "salut",
+      "school": "École C2M Unité 7",
+      "priority": "Normal",
+      "author": "M. Sene",
+      "date": "2026-08-02"
+    }
+  ],
   "appointments": [],
   "events": []
 }
