@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785943600243,
+  "updatedAt": 1785943659150,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -175,6 +175,18 @@
       "studentName": "Ameth Fall",
       "date": "2026-08-05",
       "cashierName": "M. Baldé"
+    },
+    {
+      "id": "CSH_msg8qea5pi2p",
+      "recuNum": "REC-2026-967",
+      "type": "entree",
+      "amount": 5000,
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "description": "scolarité",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "date": "2026-08-05",
+      "cashierName": "Mme Ndiaye"
     }
   ],
   "teachers": [],
