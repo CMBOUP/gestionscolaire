@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785943569164,
+  "updatedAt": 1785945908892,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -119,11 +119,11 @@
     {
       "id": "USR_msg8cuztpo3n",
       "name": "Mme Ndiaye",
-      "email": "comptable@c2m.sn",
+      "email": "moncaissier@c2m.sn",
       "role": "comptable",
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "plainPassword": "CAS123",
-      "codeHash": "7479445e23d1d3fc78ff2b113aa8329883c2a9295788bbc4e661f9fe4dd690a9",
+      "plainPassword": "Casher123",
+      "codeHash": "f57d250444ac28129fc16f70d093af76ac930ac516311169e99fb5e14e4e76b9",
       "status": "actif"
     }
   ],
@@ -175,6 +175,18 @@
       "studentName": "Ameth Fall",
       "date": "2026-08-05",
       "cashierName": "M. Baldé"
+    },
+    {
+      "id": "CSH_msg8qea5pi2p",
+      "recuNum": "REC-2026-967",
+      "type": "entree",
+      "amount": 5000,
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "description": "scolarité",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "date": "2026-08-05",
+      "cashierName": "Mme Ndiaye"
     }
   ],
   "teachers": [],
