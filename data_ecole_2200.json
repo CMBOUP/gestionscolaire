@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785968001882,
+  "updatedAt": 1785968038869,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -217,7 +217,17 @@
       "cashierName": "M. Baldé"
     }
   ],
-  "teachers": [],
+  "teachers": [
+    {
+      "id": "TCH_msgn8x2qzv1v",
+      "name": "Moussa Diallo",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "specialty": "Mathématiques",
+      "classes": "001",
+      "phone": "707528905",
+      "email": "moussa.diallo@c2m.sn"
+    }
+  ],
   "homework": [],
   "messages": [
     {
