@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785945848418,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785948009335,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -148,7 +148,20 @@
     }
   ],
   "schedules": [],
-  "grades": [],
+  "grades": [
+    {
+      "id": "GRD_msga56gxwvan",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "subject": "français",
+      "valeur": 15,
+      "coef": 1,
+      "term": "Trimestre 1",
+      "comment": "très bon travail"
+    }
+  ],
   "logbook": [
     {
       "id": "LOG_msbfydvp7d3r",
@@ -187,6 +200,18 @@
       "studentName": "Ameth Fall",
       "date": "2026-08-05",
       "cashierName": "Mme Ndiaye"
+    },
+    {
+      "id": "CSH_msga83277th0",
+      "recuNum": "REC-2026-573",
+      "type": "sortie",
+      "amount": 3000,
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "description": "sport",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "date": "2026-08-05",
+      "cashierName": "M. Baldé"
     }
   ],
   "teachers": [],
