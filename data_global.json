@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785969151869,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785969321885,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -216,6 +216,18 @@
       "studentName": "Ameth Fall",
       "date": "2026-08-05",
       "cashierName": "M. Baldé"
+    },
+    {
+      "id": "CSH_msgnwm4uip05",
+      "recuNum": "REC-2026-768",
+      "type": "entree",
+      "amount": 2000,
+      "school": "soutien scolaire",
+      "description": "inscription",
+      "studentId": null,
+      "studentName": "Autre",
+      "date": "2026-08-05",
+      "cashierName": "M.Mboup"
     }
   ],
   "teachers": [
