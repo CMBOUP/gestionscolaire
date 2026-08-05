@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785967461819,
+  "updatedAt": 1785967492241,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -22,7 +22,8 @@
       "cloudPath": "data_ecole_unite7.json",
       "plainPassword": "DIR2024",
       "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
-      "status": "actif"
+      "status": "actif",
+      "expirationDate": "2027-08-05"
     },
     {
       "id": "USR_ENS_DEMO",
@@ -83,7 +84,8 @@
       "role": "directeur",
       "plainPassword": "CMBOUP123",
       "codeHash": "a9dcc3b58cf7f795c27c424266665ad03ee022d43271fe599f396485d09ec0ae",
-      "status": "actif"
+      "status": "actif",
+      "expirationDate": "2027-08-05"
     },
     {
       "id": "USR_msbf3zokr3hb",
