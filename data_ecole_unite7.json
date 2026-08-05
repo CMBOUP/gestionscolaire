@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785931149402,
+  "updatedAt": 1785962523809,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -94,11 +94,74 @@
       "plainPassword": "Mboup321",
       "codeHash": "2b6ca96619b8d75eaf4a9de1ea34a78f5a150a1a89480c5a3f4f1cbfaf4bed45",
       "status": "actif"
+    },
+    {
+      "id": "USR_msg7t8a2u4y1",
+      "name": "M. Baldé",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "email": "cpmamebouyabaldepikine@gmail.com",
+      "cloudPath": "data_ecole_2200.json",
+      "role": "directeur",
+      "plainPassword": "Bouya2026!",
+      "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msg81fhm1fjx",
+      "name": "Mme Ndiaye",
+      "email": "comptable@c2m.sn",
+      "role": "comptable",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
+      "plainPassword": "CAS123",
+      "codeHash": "7479445e23d1d3fc78ff2b113aa8329883c2a9295788bbc4e661f9fe4dd690a9",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msg8cuztpo3n",
+      "name": "Mme Ndiaye",
+      "email": "moncaissier@c2m.sn",
+      "role": "comptable",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "plainPassword": "Casher123",
+      "codeHash": "f57d250444ac28129fc16f70d093af76ac930ac516311169e99fb5e14e4e76b9",
+      "status": "actif"
     }
   ],
-  "students": [],
+  "students": [
+    {
+      "id": "STU_msg7wg32j233",
+      "name": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
+      "matricule": "MAT-4661",
+      "parent": "Daouda Fall",
+      "phone": "777462219"
+    },
+    {
+      "id": "STU_msg8e00jhxvc",
+      "name": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "matricule": "MAT-5244",
+      "parent": "Daouda Fall",
+      "phone": "777462219"
+    }
+  ],
   "schedules": [],
-  "grades": [],
+  "grades": [
+    {
+      "id": "GRD_msga56gxwvan",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "subject": "français",
+      "valeur": 15,
+      "coef": 1,
+      "term": "Trimestre 1",
+      "comment": "très bon travail"
+    }
+  ],
   "logbook": [
     {
       "id": "LOG_msbfydvp7d3r",
@@ -113,7 +176,44 @@
     }
   ],
   "absences": [],
-  "cash": [],
+  "cash": [
+    {
+      "id": "CSH_msg7xi9hq2nx",
+      "recuNum": "REC-2026-877",
+      "type": "entree",
+      "amount": 5000,
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
+      "description": "Frais de scolarité",
+      "studentId": "STU_msg7wg32j233",
+      "studentName": "Ameth Fall",
+      "date": "2026-08-05",
+      "cashierName": "M. Baldé"
+    },
+    {
+      "id": "CSH_msg8qea5pi2p",
+      "recuNum": "REC-2026-967",
+      "type": "entree",
+      "amount": 5000,
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "description": "scolarité",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "date": "2026-08-05",
+      "cashierName": "Mme Ndiaye"
+    },
+    {
+      "id": "CSH_msga83277th0",
+      "recuNum": "REC-2026-573",
+      "type": "sortie",
+      "amount": 3000,
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "description": "sport",
+      "studentId": "STU_msg8e00jhxvc",
+      "studentName": "Ameth Fall",
+      "date": "2026-08-05",
+      "cashierName": "M. Baldé"
+    }
+  ],
   "teachers": [],
   "homework": [],
   "messages": [
