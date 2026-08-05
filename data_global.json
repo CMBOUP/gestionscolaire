@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785942039146,
+  "updatedAt": 1785942098404,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -93,6 +93,17 @@
       "school": "soutien scolaire",
       "plainPassword": "Mboup321",
       "codeHash": "2b6ca96619b8d75eaf4a9de1ea34a78f5a150a1a89480c5a3f4f1cbfaf4bed45",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msg7t8a2u4y1",
+      "name": "M. Baldé",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
+      "email": "cpmamebouyabaldepikine@gmail.com",
+      "cloudPath": "data_ecole_2200.json",
+      "role": "directeur",
+      "plainPassword": "Bouya2026!",
+      "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
       "status": "actif"
     }
   ],
