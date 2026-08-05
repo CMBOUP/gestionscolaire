@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785968271865,
+  "updatedAt": 1785968311565,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -147,8 +147,7 @@
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
       "matricule": "MAT-5244",
       "parent": "Daouda Fall",
-      "phone": "777462219",
-      "teacherName": "Moussa Diallo"
+      "phone": "777462219"
     }
   ],
   "schedules": [],
@@ -218,17 +217,7 @@
       "cashierName": "M. Baldé"
     }
   ],
-  "teachers": [
-    {
-      "id": "TCH_msgn8x2qzv1v",
-      "name": "Moussa Diallo",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "specialty": "Mathématiques",
-      "classes": "001",
-      "phone": "707528905",
-      "email": "moussa.diallo@c2m.sn"
-    }
-  ],
+  "teachers": [],
   "homework": [],
   "messages": [
     {
