@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785968038869,
+  "updatedAt": 1785968122413,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -147,7 +147,8 @@
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
       "matricule": "MAT-5244",
       "parent": "Daouda Fall",
-      "phone": "777462219"
+      "phone": "777462219",
+      "teacherName": "Moussa Diallo"
     }
   ],
   "schedules": [],
