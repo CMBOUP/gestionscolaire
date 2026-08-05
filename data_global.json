@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785967401878,
+  "updatedAt": 1785967461819,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -104,7 +104,8 @@
       "role": "directeur",
       "plainPassword": "Bouya2026!",
       "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
-      "status": "actif"
+      "status": "actif",
+      "expirationDate": ""
     },
     {
       "id": "USR_msg81fhm1fjx",
