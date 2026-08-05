@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785968182214,
+  "updatedAt": 1785968392239,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -107,7 +107,7 @@
       "plainPassword": "Bouya2026!",
       "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
       "status": "actif",
-      "expirationDate": "2027-08-05"
+      "expirationDate": "2027-03-06"
     },
     {
       "id": "USR_msg81fhm1fjx",
