@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785943029152,
+  "updatedAt": 1785943089952,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -134,6 +134,15 @@
       "class": "CE2",
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
       "matricule": "MAT-4661",
+      "parent": "Daouda Fall",
+      "phone": "777462219"
+    },
+    {
+      "id": "STU_msg8e00jhxvc",
+      "name": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "matricule": "MAT-5244",
       "parent": "Daouda Fall",
       "phone": "777462219"
     }
