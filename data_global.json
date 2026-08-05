@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785967551942,
+  "updatedAt": 1785967611875,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -23,7 +23,7 @@
       "plainPassword": "DIR2024",
       "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
       "status": "actif",
-      "expirationDate": "2028-02-05"
+      "expirationDate": "2027-02-06"
     },
     {
       "id": "USR_ENS_DEMO",
