@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785986459668,
+  "updatedAt": 1785986670072,
   "school": "Global",
   "users": [
     {
@@ -265,6 +265,18 @@
       "studentName": "Ameth Fall",
       "date": "2026-08-05",
       "cashierName": "M. Baldé"
+    },
+    {
+      "id": "CSH_msgyaqhxywqj",
+      "recuNum": "REC-2026-423",
+      "type": "entree",
+      "amount": 5000,
+      "school": "École C2M Unité 7",
+      "description": "inscription",
+      "studentId": null,
+      "studentName": "Autre",
+      "date": "2026-08-06",
+      "cashierName": "M. Diallo"
     }
   ],
   "teachers": [
