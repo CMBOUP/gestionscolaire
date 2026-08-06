@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785987460391,
+  "updatedAt": 1785987520379,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -160,7 +160,7 @@
       "phone": "777462219",
       "feeTotal": 150000,
       "feePaid": 0,
-      "teacherName": ""
+      "teacherName": "Moussa Diallo"
     }
   ],
   "schedules": [],
