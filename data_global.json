@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785980849666,
+  "updatedAt": 1785985350347,
   "school": "Global",
   "users": [
     {
@@ -151,16 +151,16 @@
       "phone": "777462219"
     },
     {
-      "id": "STU_msg8e00jhxvc",
+      "id": "STU_msgv0v6eejnp",
       "name": "Ameth Fall",
       "class": "CE2",
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "matricule": "MAT-5244",
+      "matricule": "MAT-7879",
       "parent": "Daouda Fall",
       "phone": "777462219",
-      "teacherName": "Moussa Diallo",
       "feeTotal": 150000,
-      "feePaid": 40000
+      "feePaid": 0,
+      "teacherName": ""
     }
   ],
   "schedules": [],
@@ -176,6 +176,19 @@
       "coef": 1,
       "term": "Trimestre 1",
       "comment": "très bon travail"
+    },
+    {
+      "id": "GRD_msgv2l7xpmek",
+      "studentId": "STU_msgv0v6eejnp",
+      "studentName": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "teacherName": "M. Baldé",
+      "subject": "Français",
+      "valeur": 15,
+      "coef": 1,
+      "term": "Trimestre 1",
+      "comment": "Bon travail"
     }
   ],
   "logbook": [
