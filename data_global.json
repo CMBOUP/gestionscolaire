@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785987550356,
-  "school": "Global",
+  "updatedAt": 1785987700533,
+  "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -135,8 +135,8 @@
       "email": "mdiallo72@c2m.sn",
       "role": "enseignant",
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "plainPassword": "Diop456",
-      "codeHash": "c8069bb1e1c9dc554bd3b3bd6ae344e4ffb37258013b7716c1690eebd48d34d7",
+      "plainPassword": "Diallo456",
+      "codeHash": "ae67c76bb02112e610bffd2530c9106d13704589c4ff5ca1dc2e173705f33c82",
       "status": "actif"
     }
   ],
