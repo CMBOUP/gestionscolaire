@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785978479232,
+  "updatedAt": 1785978538883,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -262,7 +262,8 @@
       "specialty": "Mathématiques",
       "classes": "001",
       "phone": "707528905",
-      "email": "moussa.diallo@c2m.sn"
+      "email": "moussa.diallo@c2m.sn",
+      "salary": 250000
     }
   ],
   "homework": [],
