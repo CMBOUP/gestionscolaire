@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785988262326,
+  "updatedAt": 1785988335781,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -118,26 +118,6 @@
       "plainPassword": "CAS123",
       "codeHash": "7479445e23d1d3fc78ff2b113aa8329883c2a9295788bbc4e661f9fe4dd690a9",
       "status": "actif"
-    },
-    {
-      "id": "USR_msg8cuztpo3n",
-      "name": "Mme Ndiaye",
-      "email": "moncaissier@c2m.sn",
-      "role": "comptable",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "plainPassword": "Casher123",
-      "codeHash": "f57d250444ac28129fc16f70d093af76ac930ac516311169e99fb5e14e4e76b9",
-      "status": "actif"
-    },
-    {
-      "id": "USR_msgsprikz7jj",
-      "name": "Moussa Diallo",
-      "email": "mdiallo72@c2m.sn",
-      "role": "enseignant",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "plainPassword": "Diallo456",
-      "codeHash": "ae67c76bb02112e610bffd2530c9106d13704589c4ff5ca1dc2e173705f33c82",
-      "status": "actif"
     }
   ],
   "students": [
@@ -152,33 +132,7 @@
     }
   ],
   "schedules": [],
-  "grades": [
-    {
-      "id": "GRD_msga56gxwvan",
-      "studentId": "STU_msg8e00jhxvc",
-      "studentName": "Ameth Fall",
-      "class": "CE2",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "subject": "français",
-      "valeur": 15,
-      "coef": 1,
-      "term": "Trimestre 1",
-      "comment": "très bon travail"
-    },
-    {
-      "id": "GRD_msgv2l7xpmek",
-      "studentId": "STU_msgv0v6eejnp",
-      "studentName": "Ameth Fall",
-      "class": "CE2",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "teacherName": "M. Baldé",
-      "subject": "Français",
-      "valeur": 15,
-      "coef": 1,
-      "term": "Trimestre 1",
-      "comment": "Bon travail"
-    }
-  ],
+  "grades": [],
   "logbook": [
     {
       "id": "LOG_msbfydvp7d3r",
@@ -231,18 +185,7 @@
       "cashierName": "M. Diallo"
     }
   ],
-  "teachers": [
-    {
-      "id": "TCH_msgn8x2qzv1v",
-      "name": "Moussa Diallo",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "specialty": "Mathématiques",
-      "classes": "001",
-      "phone": "707528905",
-      "email": "moussa.diallo@c2m.sn",
-      "salary": 250000
-    }
-  ],
+  "teachers": [],
   "homework": [],
   "messages": [
     {
