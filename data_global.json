@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785987396383,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785987550356,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -160,7 +160,7 @@
       "phone": "777462219",
       "feeTotal": 150000,
       "feePaid": 0,
-      "teacherName": ""
+      "teacherName": "Moussa Diallo"
     }
   ],
   "schedules": [],
