@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785977068916,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785977219366,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -127,6 +127,16 @@
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
       "plainPassword": "Casher123",
       "codeHash": "f57d250444ac28129fc16f70d093af76ac930ac516311169e99fb5e14e4e76b9",
+      "status": "actif"
+    },
+    {
+      "id": "USR_msgsprikz7jj",
+      "name": "M. Diop",
+      "email": "cdiop72@c2m.sn",
+      "role": "enseignant",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "plainPassword": "Diop456",
+      "codeHash": "c8069bb1e1c9dc554bd3b3bd6ae344e4ffb37258013b7716c1690eebd48d34d7",
       "status": "actif"
     }
   ],
