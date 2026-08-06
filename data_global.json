@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1785978448876,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1785978779587,
+  "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -131,8 +131,8 @@
     },
     {
       "id": "USR_msgsprikz7jj",
-      "name": "M. Diop",
-      "email": "cdiop72@c2m.sn",
+      "name": "Moussa Diallo",
+      "email": "mdiallo72@c2m.sn",
       "role": "enseignant",
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
       "plainPassword": "Diop456",
@@ -262,7 +262,8 @@
       "specialty": "Mathématiques",
       "classes": "001",
       "phone": "707528905",
-      "email": "moussa.diallo@c2m.sn"
+      "email": "moussa.diallo@c2m.sn",
+      "salary": 250000
     }
   ],
   "homework": [],
