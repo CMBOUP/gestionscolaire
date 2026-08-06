@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785981085855,
+  "updatedAt": 1785981166246,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -176,6 +176,19 @@
       "coef": 1,
       "term": "Trimestre 1",
       "comment": "très bon travail"
+    },
+    {
+      "id": "GRD_msgv2l7xpmek",
+      "studentId": "STU_msgv0v6eejnp",
+      "studentName": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "teacherName": "M. Baldé",
+      "subject": "Français",
+      "valeur": 15,
+      "coef": 1,
+      "term": "Trimestre 1",
+      "comment": "Bon travail"
     }
   ],
   "logbook": [
