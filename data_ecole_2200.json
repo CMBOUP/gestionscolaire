@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785980999278,
+  "updatedAt": 1785981085855,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -149,6 +149,18 @@
       "matricule": "MAT-4661",
       "parent": "Daouda Fall",
       "phone": "777462219"
+    },
+    {
+      "id": "STU_msgv0v6eejnp",
+      "name": "Ameth Fall",
+      "class": "CE2",
+      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
+      "matricule": "MAT-7879",
+      "parent": "Daouda Fall",
+      "phone": "777462219",
+      "feeTotal": 150000,
+      "feePaid": 0,
+      "teacherName": ""
     }
   ],
   "schedules": [],
