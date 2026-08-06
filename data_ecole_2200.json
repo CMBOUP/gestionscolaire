@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785978538883,
+  "updatedAt": 1785980069262,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -131,8 +131,8 @@
     },
     {
       "id": "USR_msgsprikz7jj",
-      "name": "M. Diop",
-      "email": "cdiop72@c2m.sn",
+      "name": "Moussa Diallo",
+      "email": "mdiallo72@c2m.sn",
       "role": "enseignant",
       "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
       "plainPassword": "Diop456",
