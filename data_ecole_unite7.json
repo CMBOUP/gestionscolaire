@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1785986585184,
+  "updatedAt": 1786117129784,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -118,26 +118,6 @@
       "plainPassword": "CAS123",
       "codeHash": "7479445e23d1d3fc78ff2b113aa8329883c2a9295788bbc4e661f9fe4dd690a9",
       "status": "actif"
-    },
-    {
-      "id": "USR_msg8cuztpo3n",
-      "name": "Mme Ndiaye",
-      "email": "moncaissier@c2m.sn",
-      "role": "comptable",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "plainPassword": "Casher123",
-      "codeHash": "f57d250444ac28129fc16f70d093af76ac930ac516311169e99fb5e14e4e76b9",
-      "status": "actif"
-    },
-    {
-      "id": "USR_msgsprikz7jj",
-      "name": "Moussa Diallo",
-      "email": "mdiallo72@c2m.sn",
-      "role": "enseignant",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "plainPassword": "Diop456",
-      "codeHash": "c8069bb1e1c9dc554bd3b3bd6ae344e4ffb37258013b7716c1690eebd48d34d7",
-      "status": "actif"
     }
   ],
   "students": [
@@ -149,48 +129,10 @@
       "matricule": "MAT-4661",
       "parent": "Daouda Fall",
       "phone": "777462219"
-    },
-    {
-      "id": "STU_msgv0v6eejnp",
-      "name": "Ameth Fall",
-      "class": "CE2",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "matricule": "MAT-7879",
-      "parent": "Daouda Fall",
-      "phone": "777462219",
-      "feeTotal": 150000,
-      "feePaid": 0,
-      "teacherName": ""
     }
   ],
   "schedules": [],
-  "grades": [
-    {
-      "id": "GRD_msga56gxwvan",
-      "studentId": "STU_msg8e00jhxvc",
-      "studentName": "Ameth Fall",
-      "class": "CE2",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "subject": "français",
-      "valeur": 15,
-      "coef": 1,
-      "term": "Trimestre 1",
-      "comment": "très bon travail"
-    },
-    {
-      "id": "GRD_msgv2l7xpmek",
-      "studentId": "STU_msgv0v6eejnp",
-      "studentName": "Ameth Fall",
-      "class": "CE2",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "teacherName": "M. Baldé",
-      "subject": "Français",
-      "valeur": 15,
-      "coef": 1,
-      "term": "Trimestre 1",
-      "comment": "Bon travail"
-    }
-  ],
+  "grades": [],
   "logbook": [
     {
       "id": "LOG_msbfydvp7d3r",
@@ -219,30 +161,6 @@
       "cashierName": "M. Baldé"
     },
     {
-      "id": "CSH_msg8qea5pi2p",
-      "recuNum": "REC-2026-967",
-      "type": "entree",
-      "amount": 5000,
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "description": "scolarité",
-      "studentId": "STU_msg8e00jhxvc",
-      "studentName": "Ameth Fall",
-      "date": "2026-08-05",
-      "cashierName": "Mme Ndiaye"
-    },
-    {
-      "id": "CSH_msga83277th0",
-      "recuNum": "REC-2026-573",
-      "type": "sortie",
-      "amount": 3000,
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "description": "sport",
-      "studentId": "STU_msg8e00jhxvc",
-      "studentName": "Ameth Fall",
-      "date": "2026-08-05",
-      "cashierName": "M. Baldé"
-    },
-    {
       "id": "CSH_msgnwm4uip05",
       "recuNum": "REC-2026-768",
       "type": "entree",
@@ -253,18 +171,6 @@
       "studentName": "Autre",
       "date": "2026-08-05",
       "cashierName": "M.Mboup"
-    },
-    {
-      "id": "CSH_msgo7aswc6c1",
-      "recuNum": "REC-2026-333",
-      "type": "entree",
-      "amount": 2000,
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "description": "mois de janvier",
-      "studentId": "STU_msg8e00jhxvc",
-      "studentName": "Ameth Fall",
-      "date": "2026-08-05",
-      "cashierName": "M. Baldé"
     },
     {
       "id": "CSH_msgyaqhxywqj",
@@ -279,18 +185,7 @@
       "cashierName": "M. Diallo"
     }
   ],
-  "teachers": [
-    {
-      "id": "TCH_msgn8x2qzv1v",
-      "name": "Moussa Diallo",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "specialty": "Mathématiques",
-      "classes": "001",
-      "phone": "707528905",
-      "email": "moussa.diallo@c2m.sn",
-      "salary": 250000
-    }
-  ],
+  "teachers": [],
   "homework": [],
   "messages": [
     {
