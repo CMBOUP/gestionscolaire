@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1786117399218,
+  "updatedAt": 1786117430681,
   "school": "École C2M Unité 7",
   "users": [
     {
@@ -185,7 +185,18 @@
       "cashierName": "M. Diallo"
     }
   ],
-  "teachers": [],
+  "teachers": [
+    {
+      "id": "TCH_msj46wc5v2ch",
+      "name": "abdou",
+      "school": "École C2M Unité 7",
+      "specialty": "anglais",
+      "classes": "cp",
+      "salary": 250000,
+      "phone": "",
+      "email": ""
+    }
+  ],
   "homework": [],
   "messages": [
     {
