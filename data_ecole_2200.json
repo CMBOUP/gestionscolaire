@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1786113579057,
+  "updatedAt": 1786223935205,
   "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
   "users": [
     {
@@ -185,7 +185,18 @@
       "cashierName": "M. Diallo"
     }
   ],
-  "teachers": [],
+  "teachers": [
+    {
+      "id": "TCH_msj46wc5v2ch",
+      "name": "abdou",
+      "school": "École C2M Unité 7",
+      "specialty": "anglais",
+      "classes": "cp",
+      "salary": 250000,
+      "phone": "",
+      "email": ""
+    }
+  ],
   "homework": [],
   "messages": [
     {
