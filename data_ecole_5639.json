@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262083909,
+  "updatedAt": 1787262162163,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -139,7 +139,7 @@
     },
     {
       "id": "USR_mt214ti77biu",
-      "name": "Cheikh kébé",
+      "name": "Habib kébé",
       "email": "habib2026@c2m.sn",
       "role": "eleve",
       "school": "le soutien scolaire",
