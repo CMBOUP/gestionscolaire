@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262354278,
+  "updatedAt": 1787262414278,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -273,7 +273,7 @@
       "end": "17:00",
       "subject": "anglais",
       "teacher": "M. Mboup",
-      "room": "Salle 1"
+      "room": "Domicile"
     }
   ],
   "grades": [],
