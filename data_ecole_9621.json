@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787255246791,
+  "updatedAt": 1787255312994,
   "school": "cours soutien scolaire",
   "users": [
     {
@@ -100,7 +100,7 @@
       "email": "soutien@c2m.sn",
       "expirationDate": "2028-08-20",
       "cloudPath": "data_ecole_9621.json",
-      "role": "directeur",
+      "role": "enseignant",
       "plainPassword": "CoraMboup2026!",
       "codeHash": "18126bf89a0aa5e6e3730ae2bfb34f29cae82d3b7eaec8edb02124380a07aa54",
       "status": "actif"
