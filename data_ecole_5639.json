@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262743907,
+  "updatedAt": 1787262863908,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -155,6 +155,16 @@
       "school": "le soutien scolaire",
       "plainPassword": "CheikhKebe2026!",
       "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt225ucuiny4",
+      "name": "M. Mboup",
+      "email": "mboup@c2m.sn",
+      "role": "enseignant",
+      "school": "le soutien scolaire",
+      "plainPassword": "Mboup2026!",
+      "codeHash": "9e38c456e4748e82eb8d4678883d2183cfbbb7d3504a616edd4c412e45f8f6d6",
       "status": "actif"
     }
   ],
