@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262894842,
+  "updatedAt": 1787263015040,
   "school": "Global",
   "users": [
     {
@@ -363,6 +363,15 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "salut mr mboup"
+    },
+    {
+      "id": "APP_mt227s0wau1e",
+      "requester": "M. Mboup",
+      "school": "le soutien scolaire",
+      "targetUser": "Habib kébé",
+      "date": "2026-08-20",
+      "time": "10:00",
+      "reason": "salut habib"
     }
   ],
   "events": []
