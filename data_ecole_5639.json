@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262294375,
+  "updatedAt": 1787262354278,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -252,6 +252,28 @@
       "subject": "Aide aux devoirs",
       "teacher": "Enseignant",
       "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt21tx6l3ts4",
+      "class": "CE2",
+      "school": "le soutien scolaire",
+      "day": "Lundi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Anglais",
+      "teacher": "M. Mboup",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt21utgf59gd",
+      "class": "CE2",
+      "school": "le soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "anglais",
+      "teacher": "M. Mboup",
+      "room": "Salle 1"
     }
   ],
   "grades": [],
