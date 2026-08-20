@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1787189083692,
-  "school": "Global",
+  "updatedAt": 1787189103895,
+  "school": "Direction Centrale C2M",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -9,6 +9,7 @@
       "role": "createur",
       "school": "Direction Centrale C2M",
       "cloudPath": "data_global.json",
+      "expirationDate": "2099-12-31",
       "plainPassword": "CoraMaster2026!",
       "codeHash": "bd1ed0b97d5c875020764882c48d13992c701ab980a1a86d3fcc9e2411d6792d",
       "status": "actif"
@@ -20,10 +21,10 @@
       "role": "directeur",
       "school": "École C2M Unité 7",
       "cloudPath": "data_ecole_unite7.json",
-      "plainPassword": "DIR2024",
-      "codeHash": "86eeca78b6837646300e24fe57a7c6e0ad76f31e3fbe203d9d7c52078a9f63f0",
-      "status": "actif",
-      "expirationDate": "2027-02-06"
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Directeur2026!",
+      "codeHash": "58eb6f368a2800bcd0dc612526195a7f801fe19ec416505166c1bb3839312371",
+      "status": "actif"
     },
     {
       "id": "USR_ENS_DEMO",
@@ -31,6 +32,7 @@
       "email": "enseignant@c2m.sn",
       "role": "enseignant",
       "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
       "plainPassword": "Enseignant2026!",
       "codeHash": "9d0c061a8178803b4ee37e8aa549ca8ee0aed9d49e9e2f702a94c7dc0b622f20",
       "status": "actif"
@@ -41,6 +43,7 @@
       "email": "eleve@c2m.sn",
       "role": "eleve",
       "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
       "plainPassword": "Eleve2026!",
       "codeHash": "16e6be44c687d738559fe51d8c5eb685915f13a3f4571935ac6395f3cf86ad7e",
       "status": "actif"
@@ -51,6 +54,7 @@
       "email": "cpe@c2m.sn",
       "role": "cpe",
       "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
       "plainPassword": "Cpe2026!",
       "codeHash": "7ab0b2830b1e0281834641a2f518197eadc4972e97a22970e6231e447307b0fd",
       "status": "actif"
@@ -61,6 +65,7 @@
       "email": "surveillant@c2m.sn",
       "role": "surveillance",
       "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
       "plainPassword": "Surveillant2026!",
       "codeHash": "3ff953a263f3d12b1717094cd13f5e65c1e78e4eccc66223ff6c6b5f77b40d44",
       "status": "actif"
@@ -71,184 +76,21 @@
       "email": "comptable@c2m.sn",
       "role": "comptable",
       "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
       "plainPassword": "Comptable2026!",
       "codeHash": "06f65362d19fe1de58133b2937c9ac0ea2edb6b7cbdd9c330c36c8d8436a68f5",
       "status": "actif"
-    },
-    {
-      "id": "USR_msbewefjllin",
-      "name": "M.Mboup",
-      "school": "soutien scolaire",
-      "email": "soutien@c2m.sn",
-      "cloudPath": "data_ecole_2520.json",
-      "role": "directeur",
-      "plainPassword": "CMBOUP123",
-      "codeHash": "a9dcc3b58cf7f795c27c424266665ad03ee022d43271fe599f396485d09ec0ae",
-      "status": "actif",
-      "expirationDate": "2029-08-05"
-    },
-    {
-      "id": "USR_msbf3zokr3hb",
-      "name": "Mor Mboup",
-      "email": "mboup@c2m.sn",
-      "role": "enseignant",
-      "school": "soutien scolaire",
-      "plainPassword": "Mboup321",
-      "codeHash": "2b6ca96619b8d75eaf4a9de1ea34a78f5a150a1a89480c5a3f4f1cbfaf4bed45",
-      "status": "actif"
-    },
-    {
-      "id": "USR_msg7t8a2u4y1",
-      "name": "M. Baldé",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar",
-      "email": "cpmamebouyabaldepikine@gmail.com",
-      "cloudPath": "data_ecole_2200.json",
-      "role": "directeur",
-      "plainPassword": "Bouya2026!",
-      "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
-      "status": "actif",
-      "expirationDate": "2027-08-05"
-    },
-    {
-      "id": "USR_msg81fhm1fjx",
-      "name": "Mme Ndiaye",
-      "email": "comptable@c2m.sn",
-      "role": "comptable",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
-      "plainPassword": "CAS123",
-      "codeHash": "7479445e23d1d3fc78ff2b113aa8329883c2a9295788bbc4e661f9fe4dd690a9",
-      "status": "actif"
-    },
-    {
-      "id": "USR_mt0kjqxc48j0",
-      "name": "Habib",
-      "email": "habib@c2m.sn",
-      "role": "eleve",
-      "school": "soutien scolaire",
-      "plainPassword": "hab2026!",
-      "codeHash": "5aa97ad83ce2c3bf5875043c9f456c081bfeb18e636393df9c185cc8e8ac0529",
-      "status": "actif"
-    },
-    {
-      "id": "USR_mt0kl3w46dm2",
-      "name": "Cheikh",
-      "email": "cheikh@c2m.sn",
-      "role": "eleve",
-      "school": "soutien scolaire",
-      "plainPassword": "cheikh2026!",
-      "codeHash": "fb23e3f8a7241afbbb9837e45d20f6698a9d76db4a8011cd9a48da3323c89d7d",
-      "status": "actif"
     }
   ],
-  "students": [
-    {
-      "id": "STU_msg7wg32j233",
-      "name": "Ameth Fall",
-      "class": "CE2",
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
-      "matricule": "MAT-4661",
-      "parent": "Daouda Fall",
-      "phone": "777462219"
-    }
-  ],
+  "students": [],
   "schedules": [],
   "grades": [],
-  "logbook": [
-    {
-      "id": "LOG_msbfydvp7d3r",
-      "class": "CE1",
-      "school": "École C2M Unité 7",
-      "subject": "histogéo",
-      "date": "2026-08-02",
-      "time": "8h-9h",
-      "teacher": "M. Sene",
-      "content": "les nombres premiers",
-      "homework": ""
-    }
-  ],
+  "logbook": [],
   "absences": [],
-  "cash": [
-    {
-      "id": "CSH_msg7xi9hq2nx",
-      "recuNum": "REC-2026-877",
-      "type": "entree",
-      "amount": 5000,
-      "school": "Cours Privé Mame Bouya Baldé  IEF Pikine-Dakar Adrese : Hamdallaye 2, B Djidda Thiaroye Kao Pikine Dakar Tel : 33 834 73 75",
-      "description": "Frais de scolarité",
-      "studentId": "STU_msg7wg32j233",
-      "studentName": "Ameth Fall",
-      "date": "2026-08-05",
-      "cashierName": "M. Baldé"
-    },
-    {
-      "id": "CSH_msgnwm4uip05",
-      "recuNum": "REC-2026-768",
-      "type": "entree",
-      "amount": 2000,
-      "school": "soutien scolaire",
-      "description": "inscription",
-      "studentId": null,
-      "studentName": "Autre",
-      "date": "2026-08-05",
-      "cashierName": "M.Mboup"
-    },
-    {
-      "id": "CSH_msgyaqhxywqj",
-      "recuNum": "REC-2026-423",
-      "type": "entree",
-      "amount": 5000,
-      "school": "École C2M Unité 7",
-      "description": "inscription",
-      "studentId": null,
-      "studentName": "Autre",
-      "date": "2026-08-06",
-      "cashierName": "M. Diallo"
-    }
-  ],
-  "teachers": [
-    {
-      "id": "TCH_msj46wc5v2ch",
-      "name": "abdou",
-      "school": "École C2M Unité 7",
-      "specialty": "anglais",
-      "classes": "cp",
-      "salary": 250000,
-      "phone": "",
-      "email": ""
-    }
-  ],
+  "cash": [],
+  "teachers": [],
   "homework": [],
-  "messages": [
-    {
-      "id": "MSG_msbfwip25y2w",
-      "title": "salut",
-      "content": "salut",
-      "school": "École C2M Unité 7",
-      "priority": "Normal",
-      "author": "M. Sene",
-      "date": "2026-08-02"
-    },
-    {
-      "id": "MSG_msc3wyxiddwy",
-      "title": "Salutations",
-      "content": "Salut toute l'équipe éducative. Bonna année scolaire.",
-      "school": "École C2M Unité 7",
-      "priority": "Normal",
-      "author": "M. Sene",
-      "date": "2026-08-02"
-    }
-  ],
+  "messages": [],
   "appointments": [],
-  "events": [
-    {
-      "id": "EVT_msbt1cbx7voh",
-      "school": "soutien scolaire",
-      "title": "conseil d'école",
-      "date": "2026-08-04",
-      "time": "15:05",
-      "type": "Réunion",
-      "audience": "les enseignants du primaire",
-      "details": "Réunion à classe 001"
-    }
-  ]
+  "events": []
 }
