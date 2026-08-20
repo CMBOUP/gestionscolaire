@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787260912068,
+  "updatedAt": 1787261274770,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -135,6 +135,16 @@
       "role": "directeur",
       "plainPassword": "DIR2026!",
       "codeHash": "de2344bf79821f4742a383466ea5d3ad9ea64315777c809fc048686ca753b9dd",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt214ti77biu",
+      "name": "Cheikh kébé",
+      "email": "habib2026@c2m.sn",
+      "role": "eleve",
+      "school": "le soutien scolaire",
+      "plainPassword": "HabibKebe2026!",
+      "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
       "status": "actif"
     }
   ],
