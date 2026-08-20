@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262624299,
+  "updatedAt": 1787262894842,
   "school": "Global",
   "users": [
     {
@@ -155,6 +155,16 @@
       "school": "le soutien scolaire",
       "plainPassword": "CheikhKebe2026!",
       "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt225ucuiny4",
+      "name": "M. Mboup",
+      "email": "mboup@c2m.sn",
+      "role": "enseignant",
+      "school": "le soutien scolaire",
+      "plainPassword": "Mboup2026!",
+      "codeHash": "9e38c456e4748e82eb8d4678883d2183cfbbb7d3504a616edd4c412e45f8f6d6",
       "status": "actif"
     }
   ],
@@ -344,24 +354,6 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Hi Cheikh, I will come tomorrow at 10 am for a catch-up lesson. See you tomorrow!"
-    },
-    {
-      "id": "APP_mt21s2llqphc",
-      "requester": "répétiteur",
-      "school": "le soutien scolaire",
-      "targetUser": "Habib kébé",
-      "date": "2026-08-20",
-      "time": "10:00",
-      "reason": "Hello, tomorrow I'll come at 10 am. See you tomorrow!"
-    },
-    {
-      "id": "APP_mt21spc1680k",
-      "requester": "répétiteur",
-      "school": "le soutien scolaire",
-      "targetUser": "Cheikh kébé",
-      "date": "2026-08-20",
-      "time": "10:00",
-      "reason": "Hello, tomorrow I'll come at 10 am. See you tomorrow!"
     },
     {
       "id": "APP_mt21zwqey8nb",
