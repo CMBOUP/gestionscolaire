@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787244548733,
+  "updatedAt": 1787244608731,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -86,7 +86,7 @@
       "name": "M. Baldé",
       "school": "Cours privés Mame Bouya Balde IEF Pikine-Dakar",
       "email": "cpmamebouyabaldepikine@gmail.com",
-      "expirationDate": "2028-02-20",
+      "expirationDate": "2027-08-20",
       "cloudPath": "data_ecole_3717.json",
       "role": "directeur",
       "plainPassword": "Bouya2026!",
@@ -98,7 +98,7 @@
       "name": "le répétiteur",
       "school": "cours soutien scolaire",
       "email": "soutien@c2m.sn",
-      "expirationDate": "2027-08-20",
+      "expirationDate": "2028-08-20",
       "cloudPath": "data_ecole_9621.json",
       "role": "directeur",
       "plainPassword": "CoraMboup2026!",
