@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1787246529937,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1787247700397,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -104,15 +104,116 @@
       "plainPassword": "CoraMboup2026!",
       "codeHash": "18126bf89a0aa5e6e3730ae2bfb34f29cae82d3b7eaec8edb02124380a07aa54",
       "status": "actif"
+    },
+    {
+      "id": "USR_mt1t1xl6857s",
+      "name": "Habib kébé",
+      "email": "habib2026@c2m.sn",
+      "role": "eleve",
+      "school": "cours soutien scolaire",
+      "plainPassword": "HabibKebe2026!",
+      "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt1t3lz0fzto",
+      "name": "Cheikh Kébé",
+      "email": "cheikh2026@c2m.sn",
+      "role": "eleve",
+      "school": "cours soutien scolaire",
+      "plainPassword": "CheikhKebe2026!",
+      "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
     }
   ],
-  "students": [],
-  "schedules": [],
+  "students": [
+    {
+      "id": "STU_mt1sk6zxze5g",
+      "name": "Habib Kébé",
+      "class": "Première",
+      "school": "cours soutien scolaire",
+      "matricule": "MAT-5974",
+      "parent": "Madame Kébé",
+      "phone": "+221705754484",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": ""
+    },
+    {
+      "id": "STU_mt1sqz12ud1v",
+      "name": "Cheikh Kébé",
+      "class": "CE1",
+      "school": "cours soutien scolaire",
+      "matricule": "MAT-7893",
+      "parent": "Madame Kébé",
+      "phone": "+221705754484",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": ""
+    }
+  ],
+  "schedules": [
+    {
+      "id": "SCH_mt1st1c99sqx",
+      "class": "CE1",
+      "school": "cours soutien scolaire",
+      "day": "Lundi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt1stsl5rmo1",
+      "class": "CE1",
+      "school": "cours soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt1suiiwb0n7",
+      "class": "Première",
+      "school": "cours soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt1sva0lp696",
+      "class": "Première",
+      "school": "cours soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    }
+  ],
   "grades": [],
   "logbook": [],
   "absences": [],
   "cash": [],
-  "teachers": [],
+  "teachers": [
+    {
+      "id": "TCH_mt1szdzcebm7",
+      "name": "M. Mboup",
+      "school": "cours soutien scolaire",
+      "specialty": "Anglais",
+      "classes": "répétition",
+      "salary": 1,
+      "phone": "707528905",
+      "email": "cmtechnologies0@gmail.com"
+    }
+  ],
   "homework": [],
   "messages": [],
   "appointments": [],
