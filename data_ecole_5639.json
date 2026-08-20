@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787261543904,
+  "updatedAt": 1787261603906,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -244,6 +244,16 @@
       "salary": 1,
       "phone": "707528905",
       "email": "cmtechnologies0@gmail.com"
+    },
+    {
+      "id": "TCH_mt21eooh9zk4",
+      "name": "M. Mboup",
+      "school": "le soutien scolaire",
+      "specialty": "anglais",
+      "classes": "domicile",
+      "salary": 1,
+      "phone": "707528905",
+      "email": "mbcoraye@yaoo.fr"
     }
   ],
   "homework": [],
