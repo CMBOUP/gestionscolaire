@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787261663907,
+  "updatedAt": 1787261723907,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -190,6 +190,18 @@
       "school": "le soutien scolaire",
       "matricule": "MAT-3278",
       "parent": "Mme Kébé",
+      "phone": "",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": "M. Mboup"
+    },
+    {
+      "id": "STU_mt21h7vg07ys",
+      "name": "Cheikh kébé",
+      "class": "CE2",
+      "school": "le soutien scolaire",
+      "matricule": "MAT-8927",
+      "parent": "Mme kébé",
       "phone": "",
       "feeTotal": 1,
       "feePaid": 0,
