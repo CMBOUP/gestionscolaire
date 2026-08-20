@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787260750591,
+  "updatedAt": 1787260810596,
   "school": "Direction Centrale C2M",
   "users": [
     {
@@ -123,6 +123,18 @@
       "school": "cours soutien scolaire",
       "plainPassword": "CheikhKebe2026!",
       "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt20xdezpigk",
+      "name": "répétiteur",
+      "school": "le soutien scolaire",
+      "email": "scoutien@c2m.sn",
+      "expirationDate": "2027-08-20",
+      "cloudPath": "data_ecole_5639.json",
+      "role": "directeur",
+      "plainPassword": "DIR2026!",
+      "codeHash": "de2344bf79821f4742a383466ea5d3ad9ea64315777c809fc048686ca753b9dd",
       "status": "actif"
     }
   ],
