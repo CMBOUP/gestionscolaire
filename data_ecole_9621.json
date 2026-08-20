@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787255013060,
+  "updatedAt": 1787255102664,
   "school": "cours soutien scolaire",
   "users": [
     {
@@ -225,6 +225,15 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Salut Habib, je viendrai demain à 10h pour rattraper le cours du lundi. A demain"
+    },
+    {
+      "id": "APP_mt1xjitxnrxo",
+      "requester": "le répétiteur",
+      "school": "cours soutien scolaire",
+      "targetUser": "Cheikh Kébé",
+      "date": "2026-08-20",
+      "time": "10:00",
+      "reason": "Hi Cheikh, I will come tomorrow at 10 am for a catch-up lesson. See you tomorrow!"
     }
   ],
   "events": []
