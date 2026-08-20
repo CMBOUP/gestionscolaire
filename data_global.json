@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787254828659,
+  "updatedAt": 1787255162976,
   "school": "Global",
   "users": [
     {
@@ -216,6 +216,25 @@
   ],
   "homework": [],
   "messages": [],
-  "appointments": [],
+  "appointments": [
+    {
+      "id": "APP_mt1xfzn8ndb5",
+      "requester": "le répétiteur",
+      "school": "cours soutien scolaire",
+      "targetUser": "Habib kébé",
+      "date": "2026-08-20",
+      "time": "10:00",
+      "reason": "Salut Habib, je viendrai demain à 10h pour rattraper le cours du lundi. A demain"
+    },
+    {
+      "id": "APP_mt1xjitxnrxo",
+      "requester": "le répétiteur",
+      "school": "cours soutien scolaire",
+      "targetUser": "Cheikh Kébé",
+      "date": "2026-08-20",
+      "time": "10:00",
+      "reason": "Hi Cheikh, I will come tomorrow at 10 am for a catch-up lesson. See you tomorrow!"
+    }
+  ],
   "events": []
 }
