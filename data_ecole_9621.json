@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787260649832,
+  "updatedAt": 1787261184872,
   "school": "cours soutien scolaire",
   "users": [
     {
@@ -126,15 +126,25 @@
       "status": "actif"
     },
     {
-      "id": "USR_mt1xs6n42g8e",
-      "name": "Le répétiteur",
-      "school": "soutien solaire",
-      "email": "soutien@c2m.sn",
+      "id": "USR_mt20xdezpigk",
+      "name": "répétiteur",
+      "school": "le soutien scolaire",
+      "email": "scoutien@c2m.sn",
       "expirationDate": "2027-08-20",
-      "cloudPath": "data_ecole_3359.json",
+      "cloudPath": "data_ecole_5639.json",
       "role": "directeur",
-      "plainPassword": "CoraMboup2026!",
-      "codeHash": "18126bf89a0aa5e6e3730ae2bfb34f29cae82d3b7eaec8edb02124380a07aa54",
+      "plainPassword": "DIR2026!",
+      "codeHash": "de2344bf79821f4742a383466ea5d3ad9ea64315777c809fc048686ca753b9dd",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt214ti77biu",
+      "name": "Cheikh kébé",
+      "email": "habib2026@c2m.sn",
+      "role": "eleve",
+      "school": "le soutien scolaire",
+      "plainPassword": "HabibKebe2026!",
+      "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
       "status": "actif"
     }
   ],
