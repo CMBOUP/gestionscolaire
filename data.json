@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787254592671,
+  "updatedAt": 1787254622666,
   "school": "cours soutien scolaire",
   "users": [
     {
@@ -216,6 +216,16 @@
   ],
   "homework": [],
   "messages": [],
-  "appointments": [],
+  "appointments": [
+    {
+      "id": "APP_mt1x8zh1mt3w",
+      "requester": "Habib kébé",
+      "school": "cours soutien scolaire",
+      "targetUser": "Habib kébé",
+      "date": "2026-08-20",
+      "time": "10:00",
+      "reason": "Salut, je viendrai demain vers 10 h pour rattraper le cours de ce lundi"
+    }
+  ],
   "events": []
 }
