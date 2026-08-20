@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787247700397,
+  "updatedAt": 1787250281211,
   "school": "Global",
   "users": [
     {
@@ -137,7 +137,7 @@
       "phone": "+221705754484",
       "feeTotal": 1,
       "feePaid": 0,
-      "teacherName": ""
+      "teacherName": "M. Mboup"
     },
     {
       "id": "STU_mt1sqz12ud1v",
@@ -149,7 +149,7 @@
       "phone": "+221705754484",
       "feeTotal": 1,
       "feePaid": 0,
-      "teacherName": ""
+      "teacherName": "M. Mboup"
     }
   ],
   "schedules": [
