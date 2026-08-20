@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787262414278,
+  "updatedAt": 1787262474422,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -272,6 +272,17 @@
       "start": "16:00",
       "end": "17:00",
       "subject": "anglais",
+      "teacher": "M. Mboup",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt21wcbp3vmb",
+      "class": "Première",
+      "school": "le soutien scolaire",
+      "day": "Lundi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Anglais",
       "teacher": "M. Mboup",
       "room": "Domicile"
     }
