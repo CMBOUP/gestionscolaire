@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787261603906,
+  "updatedAt": 1787261663907,
   "school": "le soutien scolaire",
   "users": [
     {
@@ -179,6 +179,18 @@
       "matricule": "MAT-7893",
       "parent": "Madame Kébé",
       "phone": "+221705754484",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": "M. Mboup"
+    },
+    {
+      "id": "STU_mt21fomsnynw",
+      "name": "Habib kébé",
+      "class": "Première",
+      "school": "le soutien scolaire",
+      "matricule": "MAT-3278",
+      "parent": "Mme Kébé",
+      "phone": "",
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "M. Mboup"
