@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1787255432664,
-  "school": "Global",
+  "updatedAt": 1787255509340,
+  "school": "Direction Centrale C2M",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -123,6 +123,18 @@
       "school": "cours soutien scolaire",
       "plainPassword": "CheikhKebe2026!",
       "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt1xs6n42g8e",
+      "name": "Le répétiteur",
+      "school": "soutien solaire",
+      "email": "soutien@c2m.sn",
+      "expirationDate": "2027-08-20",
+      "cloudPath": "data_ecole_3359.json",
+      "role": "directeur",
+      "plainPassword": "CoraMboup2026!",
+      "codeHash": "18126bf89a0aa5e6e3730ae2bfb34f29cae82d3b7eaec8edb02124380a07aa54",
       "status": "actif"
     }
   ],
