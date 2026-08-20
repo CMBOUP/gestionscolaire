@@ -1,6 +1,6 @@
 {
-  "updatedAt": 1787261274770,
-  "school": "Direction Centrale C2M",
+  "updatedAt": 1787261964369,
+  "school": "Global",
   "users": [
     {
       "id": "USR_CREATOR",
@@ -146,6 +146,16 @@
       "plainPassword": "HabibKebe2026!",
       "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
       "status": "actif"
+    },
+    {
+      "id": "USR_mt21bdh9rq1q",
+      "name": "Cheikh kébé",
+      "email": "cheikh2026@c2m.sn",
+      "role": "eleve",
+      "school": "le soutien scolaire",
+      "plainPassword": "CheikhKebe2026!",
+      "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
     }
   ],
   "students": [
@@ -169,6 +179,30 @@
       "matricule": "MAT-7893",
       "parent": "Madame Kébé",
       "phone": "+221705754484",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": "M. Mboup"
+    },
+    {
+      "id": "STU_mt21fomsnynw",
+      "name": "Habib kébé",
+      "class": "Première",
+      "school": "le soutien scolaire",
+      "matricule": "MAT-3278",
+      "parent": "Mme Kébé",
+      "phone": "",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": "M. Mboup"
+    },
+    {
+      "id": "STU_mt21h7vg07ys",
+      "name": "Cheikh kébé",
+      "class": "CE2",
+      "school": "le soutien scolaire",
+      "matricule": "MAT-8927",
+      "parent": "Mme kébé",
+      "phone": "",
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "M. Mboup"
@@ -234,6 +268,16 @@
       "salary": 1,
       "phone": "707528905",
       "email": "cmtechnologies0@gmail.com"
+    },
+    {
+      "id": "TCH_mt21eooh9zk4",
+      "name": "M. Mboup",
+      "school": "le soutien scolaire",
+      "specialty": "anglais",
+      "classes": "domicile",
+      "salary": 1,
+      "phone": "707528905",
+      "email": "mbcoraye@yaoo.fr"
     }
   ],
   "homework": [],
