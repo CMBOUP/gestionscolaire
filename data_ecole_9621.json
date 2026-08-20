@@ -1,0 +1,221 @@
+{
+  "updatedAt": 1787253733642,
+  "school": "cours soutien scolaire",
+  "users": [
+    {
+      "id": "USR_CREATOR",
+      "name": "Cora Mboup",
+      "email": "coramboup72@gmail.com",
+      "role": "createur",
+      "school": "Direction Centrale C2M",
+      "cloudPath": "data_global.json",
+      "expirationDate": "2099-12-31",
+      "plainPassword": "CoraMaster2026!",
+      "codeHash": "bd1ed0b97d5c875020764882c48d13992c701ab980a1a86d3fcc9e2411d6792d",
+      "status": "actif"
+    },
+    {
+      "id": "USR_DIR_DEMO",
+      "name": "M. Sene",
+      "email": "directeur@c2m.sn",
+      "role": "directeur",
+      "school": "École C2M Unité 7",
+      "cloudPath": "data_ecole_unite7.json",
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Directeur2026!",
+      "codeHash": "58eb6f368a2800bcd0dc612526195a7f801fe19ec416505166c1bb3839312371",
+      "status": "actif"
+    },
+    {
+      "id": "USR_ENS_DEMO",
+      "name": "Mme Ndiaye",
+      "email": "enseignant@c2m.sn",
+      "role": "enseignant",
+      "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Enseignant2026!",
+      "codeHash": "9d0c061a8178803b4ee37e8aa549ca8ee0aed9d49e9e2f702a94c7dc0b622f20",
+      "status": "actif"
+    },
+    {
+      "id": "USR_ELEVE_DEMO",
+      "name": "Fatou Diop",
+      "email": "eleve@c2m.sn",
+      "role": "eleve",
+      "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Eleve2026!",
+      "codeHash": "16e6be44c687d738559fe51d8c5eb685915f13a3f4571935ac6395f3cf86ad7e",
+      "status": "actif"
+    },
+    {
+      "id": "USR_CPE_DEMO",
+      "name": "M. Fall",
+      "email": "cpe@c2m.sn",
+      "role": "cpe",
+      "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Cpe2026!",
+      "codeHash": "7ab0b2830b1e0281834641a2f518197eadc4972e97a22970e6231e447307b0fd",
+      "status": "actif"
+    },
+    {
+      "id": "USR_SURV_DEMO",
+      "name": "Mme Ba",
+      "email": "surveillant@c2m.sn",
+      "role": "surveillance",
+      "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Surveillant2026!",
+      "codeHash": "3ff953a263f3d12b1717094cd13f5e65c1e78e4eccc66223ff6c6b5f77b40d44",
+      "status": "actif"
+    },
+    {
+      "id": "USR_COMPTA_DEMO",
+      "name": "M. Diallo",
+      "email": "comptable@c2m.sn",
+      "role": "comptable",
+      "school": "École C2M Unité 7",
+      "expirationDate": "2027-08-17",
+      "plainPassword": "Comptable2026!",
+      "codeHash": "06f65362d19fe1de58133b2937c9ac0ea2edb6b7cbdd9c330c36c8d8436a68f5",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt1r16vz6t2m",
+      "name": "M. Baldé",
+      "school": "Cours privés Mame Bouya Balde IEF Pikine-Dakar",
+      "email": "cpmamebouyabaldepikine@gmail.com",
+      "expirationDate": "2027-08-20",
+      "cloudPath": "data_ecole_3717.json",
+      "role": "directeur",
+      "plainPassword": "Bouya2026!",
+      "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt1r986ogbcy",
+      "name": "le répétiteur",
+      "school": "cours soutien scolaire",
+      "email": "soutien@c2m.sn",
+      "expirationDate": "2028-08-20",
+      "cloudPath": "data_ecole_9621.json",
+      "role": "directeur",
+      "plainPassword": "CoraMboup2026!",
+      "codeHash": "18126bf89a0aa5e6e3730ae2bfb34f29cae82d3b7eaec8edb02124380a07aa54",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt1t1xl6857s",
+      "name": "Habib kébé",
+      "email": "habib2026@c2m.sn",
+      "role": "eleve",
+      "school": "cours soutien scolaire",
+      "plainPassword": "HabibKebe2026!",
+      "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
+      "status": "actif"
+    },
+    {
+      "id": "USR_mt1t3lz0fzto",
+      "name": "Cheikh Kébé",
+      "email": "cheikh2026@c2m.sn",
+      "role": "eleve",
+      "school": "cours soutien scolaire",
+      "plainPassword": "CheikhKebe2026!",
+      "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif"
+    }
+  ],
+  "students": [
+    {
+      "id": "STU_mt1sk6zxze5g",
+      "name": "Habib Kébé",
+      "class": "Première",
+      "school": "cours soutien scolaire",
+      "matricule": "MAT-5974",
+      "parent": "Madame Kébé",
+      "phone": "+221705754484",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": "M. Mboup"
+    },
+    {
+      "id": "STU_mt1sqz12ud1v",
+      "name": "Cheikh Kébé",
+      "class": "CE1",
+      "school": "cours soutien scolaire",
+      "matricule": "MAT-7893",
+      "parent": "Madame Kébé",
+      "phone": "+221705754484",
+      "feeTotal": 1,
+      "feePaid": 0,
+      "teacherName": "M. Mboup"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "SCH_mt1st1c99sqx",
+      "class": "CE1",
+      "school": "cours soutien scolaire",
+      "day": "Lundi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt1stsl5rmo1",
+      "class": "CE1",
+      "school": "cours soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt1suiiwb0n7",
+      "class": "Première",
+      "school": "cours soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    },
+    {
+      "id": "SCH_mt1sva0lp696",
+      "class": "Première",
+      "school": "cours soutien scolaire",
+      "day": "Mercredi",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "Aide aux devoirs",
+      "teacher": "Enseignant",
+      "room": "Domicile"
+    }
+  ],
+  "grades": [],
+  "logbook": [],
+  "absences": [],
+  "cash": [],
+  "teachers": [
+    {
+      "id": "TCH_mt1szdzcebm7",
+      "name": "M. Mboup",
+      "school": "cours soutien scolaire",
+      "specialty": "Anglais",
+      "classes": "répétition",
+      "salary": 1,
+      "phone": "707528905",
+      "email": "cmtechnologies0@gmail.com"
+    }
+  ],
+  "homework": [],
+  "messages": [],
+  "appointments": [],
+  "events": []
+}
