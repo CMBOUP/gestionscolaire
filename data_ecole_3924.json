@@ -1,5 +1,5 @@
 {
-  "updatedAt": 1787280528494,
+  "updatedAt": 1787280612431,
   "users": [
     {
       "id": "USR_CREATOR",
@@ -12,7 +12,7 @@
       "plainPassword": "CoraMaster2026!",
       "codeHash": "bd1ed0b97d5c875020764882c48d13992c701ab980a1a86d3fcc9e2411d6792d",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_DIR_DEMO",
@@ -25,7 +25,7 @@
       "plainPassword": "Directeur2026!",
       "codeHash": "58eb6f368a2800bcd0dc612526195a7f801fe19ec416505166c1bb3839312371",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_ENS_DEMO",
@@ -37,7 +37,7 @@
       "plainPassword": "Enseignant2026!",
       "codeHash": "9d0c061a8178803b4ee37e8aa549ca8ee0aed9d49e9e2f702a94c7dc0b622f20",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_ELEVE_DEMO",
@@ -49,7 +49,7 @@
       "plainPassword": "Eleve2026!",
       "codeHash": "16e6be44c687d738559fe51d8c5eb685915f13a3f4571935ac6395f3cf86ad7e",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_CPE_DEMO",
@@ -61,7 +61,7 @@
       "plainPassword": "Cpe2026!",
       "codeHash": "7ab0b2830b1e0281834641a2f518197eadc4972e97a22970e6231e447307b0fd",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_SURV_DEMO",
@@ -73,7 +73,7 @@
       "plainPassword": "Surveillant2026!",
       "codeHash": "3ff953a263f3d12b1717094cd13f5e65c1e78e4eccc66223ff6c6b5f77b40d44",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_COMPTA_DEMO",
@@ -85,7 +85,7 @@
       "plainPassword": "Comptable2026!",
       "codeHash": "06f65362d19fe1de58133b2937c9ac0ea2edb6b7cbdd9c330c36c8d8436a68f5",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt1r16vz6t2m",
@@ -98,7 +98,7 @@
       "plainPassword": "Bouya2026!",
       "codeHash": "2f63f8ea13378d9a844d37eebcbfecca9825d097503bb186ef740c4aa0d713d4",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt1r986ogbcy",
@@ -111,7 +111,7 @@
       "plainPassword": "CoraMboup2026!",
       "codeHash": "18126bf89a0aa5e6e3730ae2bfb34f29cae82d3b7eaec8edb02124380a07aa54",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt1t1xl6857s",
@@ -122,7 +122,7 @@
       "plainPassword": "HabibKebe2026!",
       "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt1t3lz0fzto",
@@ -133,7 +133,7 @@
       "plainPassword": "CheikhKebe2026!",
       "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt20xdezpigk",
@@ -146,7 +146,7 @@
       "plainPassword": "Mboup2026!",
       "codeHash": "9e38c456e4748e82eb8d4678883d2183cfbbb7d3504a616edd4c412e45f8f6d6",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt214ti77biu",
@@ -157,7 +157,7 @@
       "plainPassword": "HabibKebe2026!",
       "codeHash": "26ab4482bdad18310fe9ce0f8da83f58a305a6703c641967c6413e16ca9fd0dc",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt21bdh9rq1q",
@@ -168,7 +168,7 @@
       "plainPassword": "CheikhKebe2026!",
       "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt225ucuiny4",
@@ -179,7 +179,7 @@
       "plainPassword": "Mboup2026!",
       "codeHash": "9e38c456e4748e82eb8d4678883d2183cfbbb7d3504a616edd4c412e45f8f6d6",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "USR_mt2cd5enc4df",
@@ -192,7 +192,18 @@
       "plainPassword": "MBOUP12345",
       "codeHash": "a3e455e554ebddf631d1e6fe4ffe55b268e4cba7c91308a1c1059fdd1e6f93de",
       "status": "actif",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
+    },
+    {
+      "id": "USR_mt2cq8oc8p96",
+      "name": "Cheikh Kébé",
+      "email": "cheikh2026@c2m.sn",
+      "role": "eleve",
+      "school": "c2m soutien",
+      "plainPassword": "CheikhKebe2026!",
+      "codeHash": "1a7d1344967636aa4a3028041750099f3edf44a7ec0329a3c9ba354c92866790",
+      "status": "actif",
+      "_updatedAt": 1787280612429
     }
   ],
   "students": [
@@ -207,7 +218,7 @@
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "M. Mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "STU_mt1sqz12ud1v",
@@ -220,7 +231,7 @@
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "M. Mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "STU_mt21fomsnynw",
@@ -233,7 +244,7 @@
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "M. Mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "STU_mt21h7vg07ys",
@@ -246,7 +257,7 @@
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "M. Mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "STU_mt2co6rkqkyy",
@@ -259,7 +270,7 @@
       "feeTotal": 1,
       "feePaid": 0,
       "teacherName": "C2M soutien",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     }
   ],
   "schedules": [
@@ -273,7 +284,7 @@
       "subject": "Aide aux devoirs",
       "teacher": "Enseignant",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt1stsl5rmo1",
@@ -285,7 +296,7 @@
       "subject": "Aide aux devoirs",
       "teacher": "Enseignant",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt1suiiwb0n7",
@@ -297,7 +308,7 @@
       "subject": "Aide aux devoirs",
       "teacher": "Enseignant",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt1sva0lp696",
@@ -309,7 +320,7 @@
       "subject": "Aide aux devoirs",
       "teacher": "Enseignant",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt21tx6l3ts4",
@@ -321,7 +332,7 @@
       "subject": "Anglais",
       "teacher": "M. Mboup",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt21utgf59gd",
@@ -333,7 +344,7 @@
       "subject": "anglais",
       "teacher": "M. Mboup",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt21wcbp3vmb",
@@ -345,7 +356,7 @@
       "subject": "Anglais",
       "teacher": "M. Mboup",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "SCH_mt21xsoq7w63",
@@ -357,7 +368,7 @@
       "subject": "anglais",
       "teacher": "M. Mboup",
       "room": "Domicile",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     }
   ],
   "grades": [],
@@ -374,7 +385,7 @@
       "salary": 1,
       "phone": "707528905",
       "email": "cmtechnologies0@gmail.com",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "TCH_mt21eooh9zk4",
@@ -385,7 +396,7 @@
       "salary": 1,
       "phone": "707528905",
       "email": "mbcoraye@yaoo.fr",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "TCH_mt2clry039s0",
@@ -396,7 +407,7 @@
       "salary": 1,
       "phone": "",
       "email": "c2msoutien@c2m.sn",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     }
   ],
   "homework": [],
@@ -410,7 +421,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Salut Habib, je viendrai demain à 10h pour rattraper le cours du lundi. A demain",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt1xjitxnrxo",
@@ -420,7 +431,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Hi Cheikh, I will come tomorrow at 10 am for a catch-up lesson. See you tomorrow!",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt23tb1yaklu",
@@ -430,7 +441,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "salut habib",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt23ttpatwjq",
@@ -440,7 +451,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Salut cheikh",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt21zwqey8nb",
@@ -450,7 +461,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "salut mr mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt227s0wau1e",
@@ -460,7 +471,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "salut habib",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt24s1srx7r2",
@@ -470,7 +481,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Salut M.Mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt24vh1nilcp",
@@ -480,7 +491,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Salut habit, c'est Mr Mboup",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt250mncnx4x",
@@ -490,7 +501,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Demain c'est notre cours",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt2512l6bxux",
@@ -500,7 +511,7 @@
       "date": "2026-08-20",
       "time": "10:00",
       "reason": "Demain c'est notre cours",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt2bh7m24spz",
@@ -510,7 +521,7 @@
       "date": "2026-08-21",
       "time": "11:00",
       "reason": "salut cheikh à demain",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt2buejeg9h6",
@@ -520,7 +531,7 @@
       "date": "2026-08-21",
       "time": "10:00",
       "reason": "don't",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     },
     {
       "id": "APP_mt2bw9qemxhy",
@@ -530,7 +541,7 @@
       "date": "2026-08-21",
       "time": "10:00",
       "reason": "Salut",
-      "_updatedAt": 1787280528493
+      "_updatedAt": 1787280612429
     }
   ],
   "events": []
